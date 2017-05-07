@@ -8,13 +8,19 @@ import {RouterModule, Routes} from "@angular/router";
 import {LoginComponent} from "./website/login/login.component";
 import { LoginFormComponent } from './website/login/login-form/login-form.component';
 import {AppRoutes} from "./routes";
+import { LobbyComponent } from './website/lobby/lobby.component';
+import {AnonymousGuard} from "./auth/guards/anonymous.guard";
+import {AuthService} from "./auth/auth.service";
+import {LoginService} from "./auth/login.service";
+import {IsAuthenticatedGuard} from "./auth/guards/is-authenticated.guard";
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    LobbyComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +28,12 @@ import {AppRoutes} from "./routes";
     HttpModule,
     RouterModule.forRoot(AppRoutes)
   ],
-  providers: [],
+  providers: [
+    AnonymousGuard,
+    IsAuthenticatedGuard,
+    AuthService,
+    LoginService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

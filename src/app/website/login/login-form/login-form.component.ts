@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Credentials} from "../../../auth/models/credentials";
-import {LoginService} from "../../../auth/login.service";
+import {Router} from "@angular/router";
+import {AuthService} from "../../../auth/auth.service";
 
 @Component({
   selector: 'app-login-form',
@@ -11,15 +12,17 @@ export class LoginFormComponent implements OnInit {
   private model: Credentials;
   private submitted: boolean;
 
-  constructor(private loginService: LoginService) {
+  constructor(private authService: AuthService, private router: Router) {
     this.model = new Credentials();
     this.submitted = false;
   }
 
   onSubmit(){
     this.submitted = true;
-    this.loginService.login(this.model).then(result => {
-      console.log(result)
+    this.authService.login(this.model).then(result => {
+      if(result.success){
+        this.router.navigate(["lobby"]);
+      }
     });
   }
 

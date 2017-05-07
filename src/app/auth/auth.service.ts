@@ -12,7 +12,8 @@ export class AuthService {
   authenticated$ = new BehaviorSubject<boolean>(this.authenticated);
 
   constructor(private router: Router, private loginService: LoginService) {
-    this.setAuthenticated(this.authenticated);
+    if (this.token)
+      this.setAuthenticated(true);
   }
 
   setAuthenticated(value: boolean) {
@@ -22,12 +23,21 @@ export class AuthService {
 
   login(credentials: Credentials): Promise<LoginResult> {
     return this.loginService.login(credentials).then(result => {
+      debugger;
       if (result.success) {
+        debugger;
         localStorage.setItem('token', result.token);
         this.setAuthenticated(true);
       }
       return result;
     });
+  }
+
+  get token() {
+    // Check if there's an unexpired access token
+    let auth_token = localStorage.getItem('token');
+    console.log(auth_token);
+    return auth_token;
   }
 
 }
