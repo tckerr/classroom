@@ -13,14 +13,14 @@ import 'rxjs/add/observable/of';
 export class LoginService {
 
   constructor(private http: Http) {
-    this.login_url = environment.finalsweekApi.endpoints.auth.login;
+    this.loginUrl = environment.finalsweekApi.endpoints.auth.login;
   }
 
-  private login_url: string;
+  private loginUrl: string;
 
   public login(model: Credentials): Promise<LoginResult> {
     return this.http
-      .post(this.login_url, model)
+      .post(this.loginUrl, model)
       .map(r => this.responseToLoginSuccess(r))
       .toPromise()
       .catch(e => this.responseToLoginError(e))
