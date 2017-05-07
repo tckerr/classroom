@@ -4,40 +4,56 @@ import {Router} from "@angular/router";
 import {Credentials} from "./models/credentials";
 import {LoginResult} from "./models/login-result";
 import {LoginService} from "app/auth/login.service";
+import {LogoutService} from "./logout.service";
 
 @Injectable()
 export class AuthService {
 
+  private token_storage_key: string = 'token';
   authenticated: boolean;
   authenticated$ = new BehaviorSubject<boolean>(this.authenticated);
 
-  constructor(private router: Router, private loginService: LoginService) {
+  constructor(private router: Router,
+              private loginService: LoginService,
+              private logoutService: LogoutService) {
     if (this.token)
       this.setAuthenticated(true);
   }
 
-  setAuthenticated(value: boolean) {
+  private setAuthenticated(value: boolean) {
     this.authenticated$.next(value);
     this.authenticated = value;
   }
 
+  private setToken(token: string) {
+    localStorage.setItem('token', token);
+    this.setAuthenticated(true);
+  }
+
+  private clearToken() {
+    localStorage.removeItem(this.token_storage_key);
+    console.log("Token cleared", this.token);
+    this.setAuthenticated(false);
+  }
+
   login(credentials: Credentials): Promise<LoginResult> {
     return this.loginService.login(credentials).then(result => {
-      debugger;
-      if (result.success) {
-        debugger;
-        localStorage.setItem('token', result.token);
-        this.setAuthenticated(true);
-      }
+      if (result.success)
+        this.setToken(result.token);
       return result;
     });
   }
 
-  get token() {
-    // Check if there's an unexpired access token
-    let auth_token = localStorage.getItem('token');
-    console.log(auth_token);
-    return auth_token;
+  logout() {
+    return this.logoutService.logout().then(result => {
+      if(result)
+        this.clearToken();
+      else
+        alert("Logout failed.")
+    });
   }
 
+  get token() {
+    return localStorage.getItem('token');
+  }
 }
