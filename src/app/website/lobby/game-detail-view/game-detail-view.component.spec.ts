@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {GameDetailComponent} from "../game-detail/game-detail.component";
 
-import { GameDetailComponent } from './game-detail.component';
 
 describe('GameDetailViewComponent', () => {
   let component: GameDetailComponent;

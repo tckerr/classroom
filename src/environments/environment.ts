@@ -7,6 +7,9 @@ let finalsweekBaseUrl = "http://localhost:8000";
 
 export const environment = {
   production: false,
+  defaultGameConfig: {
+    playerCount: 4
+  },
   finalsweekApi: {
     endpoints: {
       auth: {
@@ -14,7 +17,7 @@ export const environment = {
         logout: `${finalsweekBaseUrl}/auth/logout/`
       },
       game: {
-        summaryList: `${finalsweekBaseUrl}/api/games/`,
+        root: `${finalsweekBaseUrl}/api/games/`,
         detail: (gameId, actorId) => `${finalsweekBaseUrl}/api/games/${gameId}/?actor_id=${actorId}`,
       }
     }

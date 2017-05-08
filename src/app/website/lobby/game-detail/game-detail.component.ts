@@ -1,33 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
-import {Subscription} from "rxjs/Subscription";
+import {Component, Input, OnInit, SimpleChange} from '@angular/core';
 import {GamesService} from "../../../finalsweek-api/games.service";
 import {GameDetail} from "../../../finalsweek-api/models/game-detail";
-import {Location} from '@angular/common';
+
 
 @Component({
   selector: 'app-game-detail',
   templateUrl: './game-detail.component.html',
   styleUrls: ['./game-detail.component.css']
 })
+
 export class GameDetailComponent implements OnInit {
-  private sub: Subscription;
-  private gameId: string;
-  private actorId: string;
   private details: GameDetail;
+  @Input() public gameId: string;
+  @Input() public actorId: string;
 
-  constructor(
-    private route: ActivatedRoute,
-    private gamesService: GamesService,
-    private location: Location) { }
+  constructor(private gamesService: GamesService) {
 
-  private updateRouteParams(params){
-    let gameId = params['gameId'];
-    let actorId = params['actorId'];
-    if (this.actorId != actorId || this.gameId != gameId)
-      this.getDetails(gameId, actorId);
-    this.gameId = gameId;
-    this.actorId = actorId;
   }
 
   private getDetails(gameId: string, actorId: string) {
@@ -37,16 +25,22 @@ export class GameDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.sub = this.route.params.subscribe(result => {
-      this.updateRouteParams(result);
-    });
+    this.getDetails(this.gameId, this.actorId);
   }
 
-  public goBack(){
-    this.location.back();
+  ngOnChanges(changes: object) {
+    try {
+      let gameId = changes["gameId"].currentValue;
+      let actorId = changes["actorId"].currentValue;
+      this.getDetails(gameId, actorId);
+    } catch (e) {
+      console.error("Error updating game detail data.", e);
+    }
   }
 
-  ngOnDestroy() {
-    this.sub.unsubscribe();
+  private setDetails(gameId: string, actorId: string) {
+    this.gameId = gameId;
+    this.actorId = actorId;
+    this.getDetails(this.gameId, this.actorId);
   }
 }

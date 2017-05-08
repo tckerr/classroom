@@ -4,8 +4,8 @@ import {AnonymousGuard} from "./auth/guards/anonymous.guard";
 import {IsAuthenticatedGuard} from "./auth/guards/is-authenticated.guard";
 import {LobbyComponent} from "./website/lobby/lobby.component";
 import {GamesListComponent} from "./website/lobby/games-list/games-list.component";
-import {GameDetailComponent} from "./website/lobby/game-detail/game-detail.component";
 import {NewGameComponent} from "./website/lobby/new-game/new-game.component";
+import {GameDetailViewComponent} from "./website/lobby/game-detail-view/game-detail-view.component";
 
 
 export const LoginRoute = {
@@ -40,7 +40,7 @@ export const LobbyRoute = {
       {
         path: ':gameId/:actorId',
         pathMatch: 'full',
-        component: GameDetailComponent,
+        component: GameDetailViewComponent,
       }
     ]
   },

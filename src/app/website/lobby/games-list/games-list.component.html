@@ -1,29 +1,23 @@
-<div class="row">
-  <div class="col-md-12">
-    <button class="btn-sm btn" routerLink="new">Create game</button>
-  </div>
-</div>
 <div class="mt-3 row">
   <div class="col-md-12">
     <table class="table">
       <thead>
-        <tr>
-          <th>Game Id</th>
-          <th>Actors</th>
-        </tr>
+      <tr>
+        <th>Game Id</th>
+        <th>Actors</th>
+      </tr>
       </thead>
-      <tbody>
-        <tr *ngFor="let summary of gameSummaries">
-          <td>{{summary.id}}</td>
-          <td>
-            <p *ngFor="let actorId of summary.actorIds">
-              <a routerLink="{{summary.id}}/{{actorId}}" >{{actorId}}</a>
-            </p>
-          </td>
-        </tr>
+      <tbody *ngIf="!loading" >
+      <tr *ngFor="let summary of gameSummaries">
+        <td>{{summary.id}}</td>
+        <td>
+          <p *ngFor="let actorId of summary.actorIds">
+            <a routerLink="{{summary.id}}/{{actorId}}">{{actorId}}</a>
+          </p>
+        </td>
+      </tr>
       </tbody>
     </table>
+    <app-loading-spinner *ngIf="loading"></app-loading-spinner>
   </div>
 </div>
-
-

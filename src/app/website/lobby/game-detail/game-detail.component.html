@@ -1,10 +1,2 @@
-<div class="row">
-  <div class="col-md-12">
-    <button (click)="goBack()" class="btn btn-sm">Go Back</button>
-  </div>
-</div>
-<div class="mt-3 row">
-  <div class="col-md-12">
-    <pre class="detail-json">{{details | json}}</pre>
-  </div>
-</div>
+<pre *ngIf="details" class="detail-json">{{details | json}}</pre>
+<app-loading-spinner *ngIf="!details"></app-loading-spinner>

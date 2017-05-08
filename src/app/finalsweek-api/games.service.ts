@@ -3,14 +3,17 @@ import {Http} from "@angular/http";
 import {environment} from "../../environments/environment";
 import {GameSummary} from "./models/game-summary";
 import {GameDetail} from "./models/game-detail";
+import {GameCreateModel} from "./models/game-create-model";
 
 @Injectable()
 export class GamesService {
   private summaryListUrl: string;
+  private createUrl: string;
   private detailUrlTemplate: { summaryList; detail } | any;
 
   constructor(private http: Http) {
-    this.summaryListUrl = environment.finalsweekApi.endpoints.game.summaryList;
+    this.summaryListUrl = environment.finalsweekApi.endpoints.game.root;
+    this.createUrl = environment.finalsweekApi.endpoints.game.root;
     this.detailUrlTemplate = environment.finalsweekApi.endpoints.game.detail;
   }
 
@@ -26,6 +29,16 @@ export class GamesService {
   public details(gameId: string, actorId: string): Promise<GameDetail>{
     return this.http
       .get(this.detailUrlTemplate(gameId, actorId))
+      .map(r => new GameDetail(r.json()))
+      .toPromise();
+  }
+
+  public create(model: GameCreateModel): Promise<GameDetail>{
+    let postData = {
+      player_count: model.playerCount
+    };
+    return this.http
+      .post(this.createUrl, postData)
       .map(r => new GameDetail(r.json()))
       .toPromise();
   }

@@ -15,8 +15,11 @@ import {AuthModule} from "./auth/auth.module";
 import { NavigationComponent } from './website/navigation/navigation.component';
 import { GamesListComponent } from './website/lobby/games-list/games-list.component';
 import {FinalsweekApiModule} from "./finalsweek-api/finalsweek-api.module";
-import { GameDetailComponent } from './website/lobby/game-detail/game-detail.component';
 import { NewGameComponent } from './website/lobby/new-game/new-game.component';
+import { NewGameFormComponent } from './website/lobby/new-game/new-game-form/new-game-form.component';
+import {GameDetailViewComponent} from "./website/lobby/game-detail-view/game-detail-view.component";
+import {GameDetailComponent} from "./website/lobby/game-detail/game-detail.component";
+import { LoadingSpinnerComponent } from './visuals/loading-spinner/loading-spinner.component';
 
 
 @NgModule({
@@ -29,7 +32,10 @@ import { NewGameComponent } from './website/lobby/new-game/new-game.component';
     NavigationComponent,
     GamesListComponent,
     GameDetailComponent,
-    NewGameComponent
+    GameDetailViewComponent,
+    NewGameComponent,
+    NewGameFormComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
