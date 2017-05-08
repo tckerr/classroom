@@ -3,7 +3,7 @@
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
-let finalsweekBaseUrl = "http://localhost:8000";
+let finalsweekBaseUrl = "http://localhost:8000/api";
 
 export const environment = {
   production: false,
@@ -26,8 +26,8 @@ export const environment = {
         registration: `${finalsweekBaseUrl}/auth/registration/`
       },
       game: {
-        root: `${finalsweekBaseUrl}/api/games/`,
-        detail: (gameId, actorId) => `${finalsweekBaseUrl}/api/games/${gameId}/?actor_id=${actorId}`,
+        root: `${finalsweekBaseUrl}/games/`,
+        detail: (gameId, actorId) => `${finalsweekBaseUrl}/games/${gameId}/?actor_id=${actorId}`,
       }
     }
   }

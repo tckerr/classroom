@@ -3,8 +3,8 @@ import {BehaviorSubject} from "rxjs/BehaviorSubject";
 import {Router} from "@angular/router";
 import {Credentials} from "./models/credentials";
 import {LoginResult} from "./models/login-result";
-import {LoginService} from "finalsweek-api/auth/login/login.service";
 import {LogoutService} from "./logout/logout.service";
+import {LoginService} from "./login/login.service";
 
 @Injectable()
 export class AuthService {

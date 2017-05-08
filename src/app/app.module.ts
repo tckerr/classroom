@@ -10,16 +10,17 @@ import {LoginFormComponent} from './website/data-components/login-form/login-for
 import {AppRoutes, LoginRoute} from "./routes";
 import {LobbyComponent} from './website/views/lobby/lobby.component';
 import {LogoutComponent} from './website/views/navigation/logout/logout.component';
-import {AuthListenerService} from "../finalsweek-api/auth/auth-listener.service";
-import {AuthModule} from "../finalsweek-api/auth/auth.module";
+import {AuthListenerService} from "./finalsweek-api/auth/auth-listener.service";
+import {AuthModule} from "./finalsweek-api/auth/auth.module";
 import { NavigationComponent } from './website/views/navigation/navigation.component';
 import { GamesListComponent } from './website/data-components/games-list/games-list.component';
-import {FinalsweekApiModule} from "../finalsweek-api/finalsweek-api.module";
+import {FinalsweekApiModule} from "./finalsweek-api/finalsweek-api.module";
 import { NewGameComponent } from './website/views/lobby/new-game/new-game.component';
 import { NewGameFormComponent } from './website/data-components/new-game-form/new-game-form.component';
 import {GameDetailViewComponent} from "./website/views/lobby/game-detail-view/game-detail-view.component";
 import {GameDetailComponent} from "./website/data-components/game-detail/game-detail.component";
-import { LoadingSpinnerComponent } from '../visuals/loading-spinner/loading-spinner.component';
+import { LoadingSpinnerComponent } from './visuals/loading-spinner/loading-spinner.component';
+import { RegistrationFormComponent } from './website/data-components/registration-form/registration-form.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { LoadingSpinnerComponent } from '../visuals/loading-spinner/loading-spin
     GameDetailViewComponent,
     NewGameComponent,
     NewGameFormComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    RegistrationFormComponent
   ],
   imports: [
     BrowserModule,

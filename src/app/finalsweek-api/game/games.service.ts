@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Http} from "@angular/http";
-import {environment} from "../../environments/environment";
+import {environment} from "../../../environments/environment";
 import {GameSummary} from "./models/game-summary";
 import {GameDetail} from "./models/game-detail";
 import {GameCreateModel} from "./models/game-create-model";

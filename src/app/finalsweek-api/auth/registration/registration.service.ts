@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import {environment} from "../../../environments/environment";
+import {environment} from "../../../../environments/environment";
 import {Http} from "@angular/http";
 import {RegistrationModel} from "../models/registration-model";
+import {RegistrationResult} from "../models/registration-result";
 
 @Injectable()
 export class RegistrationService {
@@ -11,7 +12,7 @@ export class RegistrationService {
     this.registrationUrl = environment.finalsweekApi.endpoints.auth.registration;
   }
 
-  public register(model: RegistrationModel): Promise<boolean> {
+  public register(model: RegistrationModel): Promise<RegistrationResult> {
     return this.http
       .post(this.registrationUrl, model)
       .map(r => this.responseToRegistrationSuccess(r))
@@ -19,14 +20,14 @@ export class RegistrationService {
       .catch(e => this.responseToRegistrationError(e))
   }
 
-  private responseToRegistrationError(e) {
-    console.log(e);
-    return false;
+  private responseToRegistrationError(exception) {
+    console.log(exception);
+    return new RegistrationResult(false, exception.json());
   }
 
   private responseToRegistrationSuccess(response) {
-    let token = response.json().key;
-    return true;
+    console.log(response);
+    return new RegistrationResult(true);
   }
 
 }

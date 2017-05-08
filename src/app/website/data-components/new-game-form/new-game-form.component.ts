@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {GamesService} from "../../../../finalsweek-api/game/games.service";
+import {GamesService} from "../../../finalsweek-api/game/games.service";
 import {environment} from "../../../../environments/environment";
-import {GameCreateModel} from "../../../../finalsweek-api/game/models/game-create-model";
+import {GameCreateModel} from "../../../finalsweek-api/game/models/game-create-model";
 
 @Component({
   selector: 'app-new-game-form',
