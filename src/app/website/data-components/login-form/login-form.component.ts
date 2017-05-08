@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {Credentials} from "../../../auth/models/credentials";
+import {Component, Input, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
+import {Credentials} from "../../../auth/models/credentials";
 import {AuthService} from "../../../auth/auth.service";
+import {LoginResult} from "../../../auth/models/login-result";
 
 @Component({
   selector: 'app-login-form',
@@ -11,19 +12,18 @@ import {AuthService} from "../../../auth/auth.service";
 export class LoginFormComponent implements OnInit {
   private model: Credentials;
   private submitted: boolean;
+  @Input() public onSubmit: (result: LoginResult) => any;
 
   constructor(private authService: AuthService, private router: Router) {
     this.model = new Credentials();
     this.submitted = false;
   }
 
-  onSubmit(){
+  login(){
     this.submitted = true;
-    this.authService.login(this.model).then(result => {
-      if(result.success){
-        this.router.navigate(["lobby"]);
-      }
-    });
+    this.authService
+      .login(this.model)
+      .then(result => this.onSubmit(result));
   }
 
   ngOnInit() {
