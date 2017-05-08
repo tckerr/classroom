@@ -22,7 +22,8 @@ export const environment = {
     endpoints: {
       auth: {
         login: `${finalsweekBaseUrl}/auth/login/`,
-        logout: `${finalsweekBaseUrl}/auth/logout/`
+        logout: `${finalsweekBaseUrl}/auth/logout/`,
+        registration: `${finalsweekBaseUrl}/auth/registration/`
       },
       game: {
         root: `${finalsweekBaseUrl}/api/games/`,

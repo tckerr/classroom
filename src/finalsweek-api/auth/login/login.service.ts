@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {Credentials} from "./models/credentials";
-import {LoginResult} from "./models/login-result";
+import {Credentials} from "../models/credentials";
+import {LoginResult} from "../models/login-result";
 import {Http} from "@angular/http";
-import {environment} from "../../environments/environment";
+import {environment} from "../../../environments/environment";
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';

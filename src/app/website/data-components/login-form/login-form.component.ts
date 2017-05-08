@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import {Credentials} from "../../../auth/models/credentials";
-import {AuthService} from "../../../auth/auth.service";
-import {LoginResult} from "../../../auth/models/login-result";
+import {Credentials} from "../../../../finalsweek-api/auth/models/credentials";
+import {AuthService} from "../../../../finalsweek-api/auth/auth.service";
+import {LoginResult} from "../../../../finalsweek-api/auth/models/login-result";
 
 @Component({
   selector: 'app-login-form',

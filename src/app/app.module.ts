@@ -10,8 +10,8 @@ import {LoginFormComponent} from './website/data-components/login-form/login-for
 import {AppRoutes, LoginRoute} from "./routes";
 import {LobbyComponent} from './website/views/lobby/lobby.component';
 import {LogoutComponent} from './website/views/navigation/logout/logout.component';
-import {AuthListenerService} from "./auth/auth-listener.service";
-import {AuthModule} from "./auth/auth.module";
+import {AuthListenerService} from "../finalsweek-api/auth/auth-listener.service";
+import {AuthModule} from "../finalsweek-api/auth/auth.module";
 import { NavigationComponent } from './website/views/navigation/navigation.component';
 import { GamesListComponent } from './website/data-components/games-list/games-list.component';
 import {FinalsweekApiModule} from "../finalsweek-api/finalsweek-api.module";

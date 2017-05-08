@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {GameSummary} from "../../../../finalsweek-api/models/game-summary";
-import {GamesService} from "../../../../finalsweek-api/games.service";
+import {GameSummary} from "../../../../finalsweek-api/game/models/game-summary";
+import {GamesService} from "../../../../finalsweek-api/game/games.service";
 
 @Component({
   selector: 'app-games-list',

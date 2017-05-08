@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import {Http} from "@angular/http";
-import {environment} from "../environments/environment";
+import {environment} from "../../environments/environment";
 import {GameSummary} from "./models/game-summary";
 import {GameDetail} from "./models/game-detail";
 import {GameCreateModel} from "./models/game-create-model";
+
+//TODO: replace environments with bootstrap params
 
 @Injectable()
 export class GamesService {
@@ -16,7 +18,6 @@ export class GamesService {
     this.createUrl = environment.finalsweekApi.endpoints.game.root;
     this.detailUrlTemplate = environment.finalsweekApi.endpoints.game.detail;
   }
-
 
   public summaryList(): Promise<GameSummary[]>{
     let requestToGameSummary = r => r.json().map(summary => new GameSummary(summary.id, summary.actors));
