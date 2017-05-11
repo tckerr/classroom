@@ -1,16 +1,38 @@
 <div class="mt-3 row">
-  <div class="col-md-12">
-    <div class="row">
-      <p><strong>GameId:</strong> {{gameId}}</p>
-    </div>
-    <div class="row">
-      <p><strong>ActorId:</strong> {{actorId}}</p>
-    </div>
-  </div>
-  <div class="col-md-12" *ngIf="!actorId || !gameId">
-    <img src="https://s-media-cache-ak0.pinimg.com/originals/0c/44/da/0c44dacf1b038014a6f941131c5e8aa2.gif">
-  </div>
-  <div class="col-md-12" *ngIf="actorId && gameId">
-    <app-game-detail [gameId]="gameId" [actorId]="actorId"></app-game-detail>
+  <div class="col-12">
+    <ngb-tabset>
+
+      <ngb-tab title="Info">
+        <ng-template ngbTabContent>
+          <div class="mt-2 p-2 row">
+            <div class="col-12">
+              <p><strong>GameId:</strong> {{gameId}}</p>
+              <p><strong>ActorId:</strong> {{actorId}}</p>
+            </div>
+          </div>
+        </ng-template>
+      </ngb-tab>
+
+      <ngb-tab title="Actions">
+        <ng-template ngbTabContent>
+          <div class="mt-2 p-2 row">
+            <div class="col-12">
+              <app-game-actions [gameId]="gameId" [actorId]="actorId"></app-game-actions>
+            </div>
+          </div>
+        </ng-template>
+      </ngb-tab>
+
+      <ngb-tab title="JSON">
+        <ng-template ngbTabContent>
+          <div class="mt-2 p-2 row">
+            <div class="col-12">
+              <app-game-detail [gameId]="gameId" [actorId]="actorId"></app-game-detail>
+            </div>
+          </div>
+        </ng-template>
+      </ngb-tab>
+
+    </ngb-tabset>
   </div>
 </div>

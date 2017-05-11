@@ -4,6 +4,7 @@ import {environment} from "../../../environments/environment";
 import {GameSummary} from "./models/game-summary";
 import {GameDetail} from "./models/game-detail";
 import {GameCreateModel} from "./models/game-create-model";
+import { Observable } from 'rxjs/Rx';
 
 //TODO: replace environments with bootstrap params
 
@@ -27,11 +28,10 @@ export class GamesService {
       .toPromise();
   }
 
-  public details(gameId: string, actorId: string): Promise<GameDetail>{
+  public details(gameId: string, actorId: string): Observable<GameDetail>{
     return this.http
       .get(this.detailUrlTemplate(gameId, actorId))
-      .map(r => new GameDetail(r.json()))
-      .toPromise();
+      .map(r => new GameDetail(r.json()));
   }
 
   public create(model: GameCreateModel): Promise<GameDetail>{

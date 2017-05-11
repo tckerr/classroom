@@ -19,9 +19,9 @@ export class GameDetailComponent implements OnInit {
   }
 
   private getDetails(gameId: string, actorId: string) {
-    this.gamesService.details(gameId, actorId).then(details =>
-      this.details = details
-    )
+    this.gamesService
+      .details(gameId, actorId)
+      .subscribe(details => this.details = details)
   }
 
   ngOnInit() {

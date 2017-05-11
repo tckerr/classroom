@@ -1,0 +1,6 @@
+<p>
+  <select *ngIf="actors.length > 0" class="custom-select">
+    <option *ngFor="let actor of actors">{{actor.label}}</option>
+  </select>
+  <app-loading-spinner *ngIf="actors.length == 0"></app-loading-spinner>
+</p>
