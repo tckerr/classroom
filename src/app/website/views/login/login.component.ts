@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 import {LoginService} from "../../../finalsweek-api/auth/login/login.service";
 import {Router} from "@angular/router";
 
@@ -10,10 +10,11 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+  }
 
-  private onSubmit(result){
-    if(result.success){
+  private onSubmit(result) {
+    if (result.success) {
       this.router.navigate(["lobby"]);
     }
   }

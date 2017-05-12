@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, SimpleChange} from '@angular/core';
+import {Component, Input, OnInit} from "@angular/core";
 import {GamesService} from "../../../finalsweek-api/game/games.service";
 import {GameDetail} from "../../../finalsweek-api/game/models/game-detail";
 

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from "@angular/core";
 import {GamesService} from "../../../finalsweek-api/game/games.service";
 import {ActivitiesService} from "../../../finalsweek-api/game/activities.service";
 import {ActorSummary} from "../../../finalsweek-api/game/models/actor-summary";
@@ -27,6 +27,6 @@ export class GameActionsComponent implements OnInit {
       .map(actorData => new ActorSummary(actorData))
       .do(r => console.log("Received actor data:", r));
 
-     this.actorsStream.subscribe(r => this.actors.push(r));
+    this.actorsStream.subscribe(r => this.actors.push(r));
   }
 }

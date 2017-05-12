@@ -1,20 +1,20 @@
 <div class="container">
-    <form #newGameForm="ngForm" (ngSubmit)="createGame()">
-      <div class="form-group">
-        <label for="totalPlayers">Total Players</label>
-        <input [(ngModel)]="model.playerCount"
-               type="number"
-               min="{{minPlayers}}"
-               max="{{maxPlayers}}"
-               class="form-control"
-               name="totalPlayers"
-               id="totalPlayers"
-               required>
-      </div>
-      <button type="submit" class="btn btn-success">Create</button>
-    </form>
-    <div class="col-md-12" *ngIf="!loading && actorId && gameId">
-      <app-game-detail [gameId]="gameId" [actorId]="actorId"></app-game-detail>
+  <form #newGameForm="ngForm" (ngSubmit)="createGame()">
+    <div class="form-group">
+      <label for="totalPlayers">Total Players</label>
+      <input [(ngModel)]="model.playerCount"
+             type="number"
+             min="{{minPlayers}}"
+             max="{{maxPlayers}}"
+             class="form-control"
+             name="totalPlayers"
+             id="totalPlayers"
+             required>
     </div>
-    <app-loading-spinner *ngIf="loading"></app-loading-spinner>
+    <button type="submit" class="btn btn-success">Create</button>
+  </form>
+  <div class="col-md-12" *ngIf="!loading && actorId && gameId">
+    <app-game-detail [gameId]="gameId" [actorId]="actorId"></app-game-detail>
+  </div>
+  <app-loading-spinner *ngIf="loading"></app-loading-spinner>
 </div>

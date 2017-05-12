@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from "@angular/core";
+import {CommonModule} from "@angular/common";
 import {GamesService} from "./game/games.service";
 import {ActivitiesService} from "./game/activities.service";
 
@@ -10,4 +10,5 @@ import {ActivitiesService} from "./game/activities.service";
   providers: [GamesService, ActivitiesService],
   declarations: []
 })
-export class FinalsweekApiModule { }
+export class FinalsweekApiModule {
+}

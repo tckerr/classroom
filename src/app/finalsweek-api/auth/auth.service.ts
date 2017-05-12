@@ -1,10 +1,11 @@
-import {Injectable} from '@angular/core';
+import {Injectable} from "@angular/core";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
 import {Router} from "@angular/router";
 import {Credentials} from "./models/credentials";
 import {LoginResult} from "./models/login-result";
 import {LogoutService} from "./logout/logout.service";
 import {LoginService} from "./login/login.service";
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class AuthService {
@@ -36,17 +37,18 @@ export class AuthService {
     this.setAuthenticated(false);
   }
 
-  login(credentials: Credentials): Promise<LoginResult> {
-    return this.loginService.login(credentials).then(result => {
+  login(credentials: Credentials): Observable<LoginResult> {
+    const loginStream = this.loginService.login(credentials);
+    loginStream.subscribe(result => {
       if (result.success)
         this.setToken(result.token);
-      return result;
     });
+    return loginStream;
   }
 
   logout() {
     return this.logoutService.logout().then(result => {
-      if(result)
+      if (result)
         this.clearToken();
       else
         alert("Logout failed.")

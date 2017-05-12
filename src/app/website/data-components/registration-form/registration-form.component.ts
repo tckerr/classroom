@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 import {RegistrationModel} from "../../../finalsweek-api/auth/models/registration-model";
 import {RegistrationService} from "../../../finalsweek-api/auth/registration/registration.service";
 
@@ -10,11 +10,12 @@ import {RegistrationService} from "../../../finalsweek-api/auth/registration/reg
 export class RegistrationFormComponent implements OnInit {
 
   private model: RegistrationModel;
+
   constructor(private registrationService: RegistrationService) {
     this.model = new RegistrationModel("", "", "", "");
   }
 
-  public register(){
+  public register() {
     return this.registrationService
       .register(this.model)
       .then(r => console.log(r))

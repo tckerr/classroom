@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 import {GameSummary} from "../../../finalsweek-api/game/models/game-summary";
 import {GamesService} from "../../../finalsweek-api/game/games.service";
 
@@ -15,11 +15,11 @@ export class GamesListComponent implements OnInit {
   constructor(private gamesService: GamesService) {
     this.loading = true;
     this.gamesService
-       .summaryList()
-       .then(r => {
-         this.gameSummaries = r;
-         this.loading = false;
-       });
+      .summaryList()
+      .then(r => {
+        this.gameSummaries = r;
+        this.loading = false;
+      });
   }
 
   ngOnInit() {

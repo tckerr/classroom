@@ -1,13 +1,13 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
 import {Credentials} from "../../../finalsweek-api/auth/models/credentials";
 import {AuthService} from "../../../finalsweek-api/auth/auth.service";
 import {LoginResult} from "../../../finalsweek-api/auth/models/login-result";
 
 @Component({
-  selector: 'app-login-form',
-  templateUrl: './login-form.component.html',
-  styleUrls: ['./login-form.component.css']
+  selector: "app-login-form",
+  templateUrl: "./login-form.component.html",
+  styleUrls: ["./login-form.component.css"]
 })
 export class LoginFormComponent implements OnInit {
   private model: Credentials;
@@ -19,11 +19,11 @@ export class LoginFormComponent implements OnInit {
     this.submitted = false;
   }
 
-  login(){
+  login() {
     this.submitted = true;
     this.authService
       .login(this.model)
-      .then(result => this.onSubmit(result));
+      .subscribe(result => this.onSubmit(result));
   }
 
   ngOnInit() {

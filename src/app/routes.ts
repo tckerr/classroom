@@ -20,32 +20,32 @@ export const LobbyRoute = {
   component: LobbyComponent,
   canActivate: [IsAuthenticatedGuard],
   children: [
-  {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'games',
-  },
-  {
-    path: 'games',
-    children: [
-      {
-        path: '',
-        component: GamesListComponent,
-      },
-      {
-        path: 'new',
-        pathMatch: 'full',
-        component: NewGameComponent,
-      },
-      {
-        path: ':gameId/:actorId',
-        pathMatch: 'full',
-        component: GameDetailViewComponent,
-      }
-    ]
-  },
+    {
+      path: '',
+      pathMatch: 'full',
+      redirectTo: 'games',
+    },
+    {
+      path: 'games',
+      children: [
+        {
+          path: '',
+          component: GamesListComponent,
+        },
+        {
+          path: 'new',
+          pathMatch: 'full',
+          component: NewGameComponent,
+        },
+        {
+          path: ':gameId/:actorId',
+          pathMatch: 'full',
+          component: GameDetailViewComponent,
+        }
+      ]
+    },
 
-]
+  ]
 };
 
 export const DefaultRoute = {

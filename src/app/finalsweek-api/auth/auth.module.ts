@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from "@angular/core";
+import {CommonModule} from "@angular/common";
 import {LoginService} from "./login/login.service";
 import {LogoutService} from "./logout/logout.service";
 import {AuthService} from "./auth.service";
@@ -23,4 +23,5 @@ import {RegistrationService} from "./registration/registration.service";
   ],
   declarations: []
 })
-export class AuthModule { }
+export class AuthModule {
+}

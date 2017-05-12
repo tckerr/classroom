@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 import {AuthService} from "../../../../finalsweek-api/auth/auth.service";
 import {Router} from "@angular/router";
 
@@ -9,12 +9,13 @@ import {Router} from "@angular/router";
 })
 export class LogoutComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {
+  }
 
   ngOnInit() {
   }
 
-  logout(){
+  logout() {
     this.authService.logout().then(request => {
 
     });

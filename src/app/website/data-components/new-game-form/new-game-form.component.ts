@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 import {GamesService} from "../../../finalsweek-api/game/games.service";
 import {environment} from "../../../../environments/environment";
 import {GameCreateModel} from "../../../finalsweek-api/game/models/game-create-model";
@@ -20,9 +20,9 @@ export class NewGameFormComponent implements OnInit {
     this.model = new GameCreateModel(environment.defaultGameConfig.playerCount)
   }
 
-  public createGame(){
+  public createGame() {
     this.loading = true;
-    this.gamesService.create(this.model).then((result:any) => {
+    this.gamesService.create(this.model).then((result: any) => {
       let publicData = result.json.public;
       this.gameId = publicData.game_id;
       this.actorId = publicData.actors[0].id;

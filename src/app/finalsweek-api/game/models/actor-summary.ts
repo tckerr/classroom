@@ -5,7 +5,7 @@ export class ActorSummary {
   public name: string;
   public inPlayEffects: any[];
 
-  constructor(private data:any){
+  constructor(private data: any) {
     this.id = data.id;
     this.label = data.label;
     this.name = data.name;

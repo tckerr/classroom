@@ -1,20 +1,20 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from "@angular/core";
 import {Credentials} from "../models/credentials";
 import {LoginResult} from "../models/login-result";
 import {Http} from "@angular/http";
-import {environment} from '../../../../environments/environment';
-import 'rxjs/add/operator/toPromise';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/observable/throw'
-import 'rxjs/add/observable/of';
+import {environment} from "../../../../environments/environment";
+import "rxjs/add/operator/toPromise";
+import "rxjs/add/operator/map";
+import "rxjs/add/operator/catch";
+import "rxjs/add/observable/throw";
+import "rxjs/add/observable/of";
 
-import { Observable } from 'rxjs/Rx';
+import {Observable} from "rxjs/Rx";
 
 @Injectable()
 export class LoginMockService {
   public login(model: Credentials): Promise<LoginResult> {
-    let loginResult = new LoginResult(true, "mock_token", undefined);
+    const loginResult = new LoginResult(true, "mock_token");
     return Observable
       .from<LoginResult>([loginResult])
       .toPromise();
@@ -24,18 +24,20 @@ export class LoginMockService {
 @Injectable()
 export class LoginService {
 
+  private loginUrl: string;
+
   constructor(private http: Http) {
     this.loginUrl = environment.finalsweekApi.endpoints.auth.login;
   }
 
-  private loginUrl: string;
+  public login(model: Credentials): Observable<LoginResult> {
+    const loginStream = this.http.post(this.loginUrl, model);
+    const exceptionStream = loginStream
+      .catch(e => loginStream)
+      .map(e => this.responseToLoginError(e));
+    const resultStream = loginStream.map(r => this.responseToLoginSuccess(r));
 
-  public login(model: Credentials): Promise<LoginResult> {
-    return this.http
-      .post(this.loginUrl, model)
-      .map(r => this.responseToLoginSuccess(r))
-      .toPromise()
-      .catch(e => this.responseToLoginError(e));
+    return Observable.concat(exceptionStream, resultStream);
   }
 
   private responseToLoginError(e) {
@@ -44,7 +46,7 @@ export class LoginService {
   }
 
   private responseToLoginSuccess(response) {
-    let token = response.json().key;
-    return new LoginResult(response.ok, token)
+    const token = response.json().key;
+    return new LoginResult(response.ok, token);
   }
 }

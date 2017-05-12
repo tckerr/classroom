@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
 import {Subscription} from "rxjs/Subscription";
 
@@ -13,9 +13,10 @@ export class GameDetailViewComponent implements OnInit {
   private gameId: string;
   private actorId: string;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute) {
+  }
 
-  private updateRouteParams(params){
+  private updateRouteParams(params) {
     this.gameId = params['gameId'];
     this.actorId = params['actorId'];
   }
