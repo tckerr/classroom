@@ -2,12 +2,24 @@ import { Injectable } from '@angular/core';
 import {Credentials} from "../models/credentials";
 import {LoginResult} from "../models/login-result";
 import {Http} from "@angular/http";
-import {environment} from "../../../../environments/environment";
+import {environment} from '../../../../environments/environment';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw'
 import 'rxjs/add/observable/of';
+
+import { Observable } from 'rxjs/Rx';
+
+@Injectable()
+export class LoginMockService {
+  public login(model: Credentials): Promise<LoginResult> {
+    let loginResult = new LoginResult(true, "mock_token", undefined);
+    return Observable
+      .from<LoginResult>([loginResult])
+      .toPromise();
+  }
+}
 
 @Injectable()
 export class LoginService {
@@ -23,7 +35,7 @@ export class LoginService {
       .post(this.loginUrl, model)
       .map(r => this.responseToLoginSuccess(r))
       .toPromise()
-      .catch(e => this.responseToLoginError(e))
+      .catch(e => this.responseToLoginError(e));
   }
 
   private responseToLoginError(e) {
