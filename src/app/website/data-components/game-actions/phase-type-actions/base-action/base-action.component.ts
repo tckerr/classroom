@@ -2,8 +2,9 @@ import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core"
 import {GameSummary} from "../../../../../finalsweek-api/game/models/summary/game-summary";
 import {GameSummaryAccessor} from "../../../../../finalsweek-api/game/models/summary/accessors/game-summary-accessor";
 import {ActionSubmitter} from "../action-submitter";
-import {ActionSubmissionNotifierService} from "../../../../comm-services/action-submission-notifier.service";
+import {GameSummaryUpdateNotifierService} from "../../../../comm-services/game-summary-update-notifier.service";
 import {ActivitiesService} from "../../../../../finalsweek-api/game/activities.service";
+import {GamesService} from "../../../../../finalsweek-api/game/games.service";
 
 @Component({
   selector: "app-base-action",
@@ -15,8 +16,9 @@ export class BaseActionComponent implements OnInit, OnChanges, ActionSubmitter {
   protected accessor: GameSummaryAccessor;
   protected loading: boolean = true;
   constructor(
-    protected actionSubmissionNotifierService: ActionSubmissionNotifierService,
-    protected activitiesService: ActivitiesService) {}
+    protected gameSummaryUpdateNotifierService: GameSummaryUpdateNotifierService,
+    protected activitiesService: ActivitiesService,
+    protected gamesService: GamesService) {}
 
   ngOnInit() {
     console.log("CREATED");
@@ -37,15 +39,23 @@ export class BaseActionComponent implements OnInit, OnChanges, ActionSubmitter {
   }
 
   onSubmit() {
-    this.loading = true;
     let action = this.buildAction();
     console.log("Submitting action:", this.accessor.gameId, this.accessor.currentTurnActor.id, action);
+    this.loading = true;
     this.activitiesService
       .takeAction(this.accessor.gameId, this.accessor.currentTurnActor.id, action)
-      .subscribe(gameDetail => {
-        this.actionSubmissionNotifierService.broadcastActionSubmission(gameDetail);
-        this.loading = false;
-      });
+      .subscribe(gameSummary => this.broadcastUpdate(gameSummary));
+  }
+
+  protected refresh(){
+    this.gamesService
+      .details(this.accessor.gameId, this.accessor.currentTurnActor.id)
+      .subscribe(gameSummary => this.broadcastUpdate(gameSummary));
+  }
+
+  private broadcastUpdate(gameSummary: GameSummary){
+    this.gameSummaryUpdateNotifierService.broadcastUpdate(gameSummary);
+    this.loading = false;
   }
 
   public buildAction() {

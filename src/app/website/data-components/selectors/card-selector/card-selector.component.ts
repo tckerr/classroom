@@ -9,6 +9,7 @@ import {CardIdSelectionService} from "../../../comm-services/card-id-selection.s
 export class CardSelectorComponent implements OnInit {
   @Input() private cards: any[] = [];
   @Input() private selectedCardId: string;
+  @Input() private disabled: boolean;
   private selectedCard: any;
 
   constructor(private actorIdSelectionService: CardIdSelectionService) { }

@@ -42,6 +42,7 @@ export class PromptSelectorComponent implements OnInit, OnChanges {
       this.questions.push(question);
       this.onSelect(question, prompt.closed[key].selected_option.id)
     }
+    this.questions.reverse();
   }
 
   public onSelect(question:PromptQuestion, optionId: string){

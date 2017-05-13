@@ -3,13 +3,13 @@ import {Subject} from "rxjs/Subject";
 import {GameSummary} from "../../finalsweek-api/game/models/summary/game-summary";
 
 @Injectable()
-export class ActionSubmissionNotifierService {
+export class GameSummaryUpdateNotifierService {
 
   private notifierSource = new Subject<GameSummary>();
 
-  public actionSubmitted$ = this.notifierSource.asObservable();
+  public gameSummaryUpdated$ = this.notifierSource.asObservable();
 
-  public broadcastActionSubmission(summary: GameSummary) {
+  public broadcastUpdate(summary: GameSummary) {
     this.notifierSource.next(summary);
   }
 

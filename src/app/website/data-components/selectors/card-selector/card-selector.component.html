@@ -1,7 +1,8 @@
 <select
   [(ngModel)]="selectedCard"
   (change)="onSelect()"
-  class="form-control">
+  class="form-control"
+  [disabled]="disabled">
   <option
     *ngFor="let card of cards"
     [ngValue]="card">

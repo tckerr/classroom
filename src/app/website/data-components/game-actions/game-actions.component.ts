@@ -5,7 +5,7 @@ import {GameSummary} from "../../../finalsweek-api/game/models/summary/game-summ
 import {GameSummaryAccessor} from "app/finalsweek-api/game/models/summary/accessors/game-summary-accessor";
 import {PhaseActionTypeResolverService} from "../../../finalsweek-api/game/helpers/phase-action-type-resolver.service";
 import {ActionType} from "../../../finalsweek-api/game/models/definitions";
-import {ActionSubmissionNotifierService} from "../../comm-services/action-submission-notifier.service";
+import {GameSummaryUpdateNotifierService} from "../../comm-services/game-summary-update-notifier.service";
 
 // TODO: move to views
 @Component({
@@ -14,8 +14,9 @@ import {ActionSubmissionNotifierService} from "../../comm-services/action-submis
   styleUrls: ["./game-actions.component.css"],
   providers: [
     PhaseActionTypeResolverService,
-    ActionSubmissionNotifierService,
-    ActivitiesService]
+    GameSummaryUpdateNotifierService,
+    ActivitiesService,
+    GamesService]
 })
 export class GameActionsComponent implements OnInit {
   @Input() public gameId: string;
@@ -27,16 +28,16 @@ export class GameActionsComponent implements OnInit {
   private accessor: GameSummaryAccessor;
 
   constructor(private gamesService: GamesService,
-              private actionSubmissionNotifierService: ActionSubmissionNotifierService,
+              private gameSummaryUpdateNotifierService: GameSummaryUpdateNotifierService,
               private phaseActionTypeResolver: PhaseActionTypeResolverService) {
   }
 
   ngOnInit() {
     this.gamesService
-      .details(this.gameId, this.actorId, true)
+      .details(this.gameId, this.actorId, false)
       .subscribe(gameSummary => this.refreshFromGameDetail(gameSummary));
 
-    this.actionSubmissionNotifierService.actionSubmitted$.subscribe(gameSummary => this.refreshFromGameDetail(gameSummary))
+    this.gameSummaryUpdateNotifierService.gameSummaryUpdated$.subscribe(gameSummary => this.refreshFromGameDetail(gameSummary))
   }
 
   private refreshFromGameDetail(gameSummary: GameSummary) {
