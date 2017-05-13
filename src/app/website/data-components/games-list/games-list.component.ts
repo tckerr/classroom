@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
-import {GameSummary} from "../../../finalsweek-api/game/models/game-summary";
 import {GamesService} from "../../../finalsweek-api/game/games.service";
+import {GameOverviewSummary} from "../../../finalsweek-api/game/models/game-overview-summary";
 
 @Component({
   selector: 'app-games-list',
@@ -9,7 +9,7 @@ import {GamesService} from "../../../finalsweek-api/game/games.service";
 })
 export class GamesListComponent implements OnInit {
 
-  private gameSummaries: GameSummary[];
+  private gameSummaries: GameOverviewSummary[];
   private loading: boolean = false;
 
   constructor(private gamesService: GamesService) {

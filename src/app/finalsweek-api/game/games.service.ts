@@ -1,8 +1,8 @@
 import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
 import {environment} from "../../../environments/environment";
-import {GameSummary} from "./models/game-summary";
-import {GameDetail} from "./models/game-detail";
+import {GameOverviewSummary} from "./models/game-overview-summary";
+import {GameSummary} from "./models/summary/game-summary";
 import {GameCreateModel} from "./models/game-create-model";
 import {Observable} from "rxjs/Rx";
 
@@ -20,25 +20,25 @@ export class GamesService {
     this.detailUrlTemplate = environment.finalsweekApi.endpoints.game.detail;
   }
 
-  public summaryList(): Observable<GameSummary[]> {
-    let requestToGameSummary = r => r.json().map(summary => new GameSummary(summary.id, summary.actors));
+  public summaryList(): Observable<GameOverviewSummary[]> {
+    let requestToGameSummary = r => r.json().map(summary => new GameOverviewSummary(summary.id, summary.actors));
     return this.http
       .get(this.summaryListUrl)
       .map(requestToGameSummary);
   }
 
-  public details(gameId: string, actorId: string): Observable<GameDetail> {
+  public details(gameId: string, actorId: string, fresh: boolean = false): Observable<GameSummary> {
     return this.http
-      .get(this.detailUrlTemplate(gameId, actorId))
-      .map(r => new GameDetail(r.json()));
+      .get(this.detailUrlTemplate(gameId, actorId, fresh))
+      .map(r => new GameSummary(r.json()));
   }
 
-  public create(model: GameCreateModel): Observable<GameDetail> {
+  public create(model: GameCreateModel): Observable<GameSummary> {
     let postData = {
       player_count: model.playerCount
     };
     return this.http
       .post(this.createUrl, postData)
-      .map(r => new GameDetail(r.json()));
+      .map(r => new GameSummary(r.json()));
   }
 }

@@ -1,0 +1,14 @@
+<form *ngIf="!loading" #submitActivityForm="ngForm" (ngSubmit)="onSubmit()">
+  <div class="card">
+    <div class="card-block">
+      <h4 class="card-title">Action Options</h4>
+      <h6 class="card-subtitle mb-2 text-muted">Play a default action.</h6>
+      <div class="row mt-2">
+        <div class="col-12">
+          <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<app-loading-spinner *ngIf="loading"></app-loading-spinner>

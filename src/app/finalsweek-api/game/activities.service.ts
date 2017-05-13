@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
 import {environment} from "../../../environments/environment";
-import {GameDetail} from "./models/game-detail";
+import {GameSummary} from "./models/summary/game-summary";
 
 @Injectable()
 export class ActivitiesService {
@@ -18,7 +18,7 @@ export class ActivitiesService {
         game_id: gameId,
         action_params: action
       })
-      .map(r => new GameDetail(r.json()));
+      .map(r => new GameSummary(r.json()));
   }
 
 }

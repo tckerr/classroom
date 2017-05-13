@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {CardIdSelectionService} from "../../comm-services/card-id-selection.service";
+import {CardIdSelectionService} from "../../../comm-services/card-id-selection.service";
 
 @Component({
   selector: "app-card-selector",
@@ -8,14 +8,20 @@ import {CardIdSelectionService} from "../../comm-services/card-id-selection.serv
 })
 export class CardSelectorComponent implements OnInit {
   @Input() private cards: any[] = [];
+  @Input() private selectedCardId: string;
   private selectedCard: any;
 
   constructor(private actorIdSelectionService: CardIdSelectionService) { }
 
-  private onSelect(){
+  public onSelect(){
     this.actorIdSelectionService.broadcastSelection(this.selectedCard.id);
   }
 
   ngOnInit() {
+    for(let card of this.cards){
+      if (card.id == this.selectedCardId){
+        this.selectedCard = card;
+      }
+    }
   }
 }

@@ -27,7 +27,7 @@ export const environment = {
       },
       game: {
         root: `${finalsweekBaseUrl}/games/`,
-        detail: (gameId, actorId) => `${finalsweekBaseUrl}/games/${gameId}/?actor_id=${actorId}`,
+        detail: (gameId, actorId, fresh) => `${finalsweekBaseUrl}/games/${gameId}/?actor_id=${actorId}&fresh=${fresh}`,
       },
       activities: {
         root: `${finalsweekBaseUrl}/activities/`

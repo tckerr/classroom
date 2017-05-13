@@ -1,1 +1,21 @@
-<app-new-game-form></app-new-game-form>
+<div class="card">
+  <div class="card-block">
+    <h4 class="card-title">Create a new game</h4>
+    <app-new-game-form></app-new-game-form>
+  </div>
+</div>
+
+<div class="card mt-2" *ngIf="gameSummary">
+  <div class="card-block">
+    <h4 class="card-title">
+      <span>Game details </span>
+      <span>
+        <button
+          class="btn btn-info btn-sm"
+          routerLink="/lobby/games/{{gameSummary.publicData.gameId}}/{{getRandomActorId()}}" >Go to actions
+        </button>
+      </span>
+    </h4>
+    <t-json-viewer [json]="gameSummary.asJson()"></t-json-viewer>
+  </div>
+</div>

@@ -22,8 +22,12 @@ import {GameDetailComponent} from "./website/data-components/game-detail/game-de
 import {LoadingSpinnerComponent} from "./visuals/loading-spinner/loading-spinner.component";
 import {RegistrationFormComponent} from "./website/data-components/registration-form/registration-form.component";
 import {GameActionsComponent} from "./website/data-components/game-actions/game-actions.component";
-import { CardSelectorComponent } from './website/data-components/card-selector/card-selector.component';
-
+import { CardSelectorComponent } from './website/data-components/selectors/card-selector/card-selector.component';
+import { TJsonViewerModule } from 't-json-viewer';
+import { ClasstimeActionComponent } from './website/data-components/game-actions/phase-type-actions/classtime-action/classtime-action.component';
+import { BaseActionComponent } from './website/data-components/game-actions/phase-type-actions/base-action/base-action.component';
+import { PromptSelectorComponent } from './website/data-components/selectors/prompt-selector/prompt-selector.component';
+import { DisciplineActionComponent } from './website/data-components/game-actions/phase-type-actions/discipline-action/discipline-action.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +45,11 @@ import { CardSelectorComponent } from './website/data-components/card-selector/c
     LoadingSpinnerComponent,
     RegistrationFormComponent,
     GameActionsComponent,
-    CardSelectorComponent
+    CardSelectorComponent,
+    ClasstimeActionComponent,
+    BaseActionComponent,
+    PromptSelectorComponent,
+    DisciplineActionComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +58,8 @@ import { CardSelectorComponent } from './website/data-components/card-selector/c
     RouterModule.forRoot(AppRoutes),
     NgbModule.forRoot(),
     AuthModule,
-    FinalsweekApiModule
+    FinalsweekApiModule,
+    TJsonViewerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

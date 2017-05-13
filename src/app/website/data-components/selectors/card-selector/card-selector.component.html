@@ -1,0 +1,10 @@
+<select
+  [(ngModel)]="selectedCard"
+  (change)="onSelect()"
+  class="form-control">
+  <option
+    *ngFor="let card of cards"
+    [ngValue]="card">
+    <span>{{card.template.name}}</span>
+  </option>
+</select>

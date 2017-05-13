@@ -2,7 +2,8 @@ import {Component, OnInit} from "@angular/core";
 import {GamesService} from "../../../finalsweek-api/game/games.service";
 import {environment} from "../../../../environments/environment";
 import {GameCreateModel} from "../../../finalsweek-api/game/models/game-create-model";
-import {GameDetail} from "../../../finalsweek-api/game/models/game-detail";
+import {GameSummary} from "../../../finalsweek-api/game/models/summary/game-summary";
+import {GameCreationNotificationService} from "../../comm-services/game-creation-notification.service";
 
 @Component({
   selector: 'app-new-game-form',
@@ -13,11 +14,9 @@ export class NewGameFormComponent implements OnInit {
   private model: GameCreateModel;
   private minPlayers: number = environment.defaultGameConfig.minPlayers;
   private maxPlayers: number = environment.defaultGameConfig.maxPlayers;
-  private gameId: string;
-  private actorId: string;
   private loading: boolean = false;
 
-  constructor(private gamesService: GamesService) {
+  constructor(private gamesService: GamesService, private notificationService: GameCreationNotificationService) {
     this.model = new GameCreateModel(environment.defaultGameConfig.playerCount)
   }
 
@@ -28,12 +27,9 @@ export class NewGameFormComponent implements OnInit {
       .subscribe(r => this.handleCreateGameResponse(r));
   }
 
-  public handleCreateGameResponse(result: GameDetail){
-      console.log(result)
-      let publicData = result.json.public;
-      this.gameId = publicData.game_id;
-      this.actorId = publicData.actors[0].id;
+  public handleCreateGameResponse(result: GameSummary){
       this.loading = false;
+      this.notificationService.broadcastGameCreation(result);
   }
 
   ngOnInit() {

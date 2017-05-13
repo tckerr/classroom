@@ -1,0 +1,4 @@
+:host /deep/ .t-json-viewer {
+  overflow-x: hidden!important;
+  overflow-y: auto;
+}

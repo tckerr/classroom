@@ -1,0 +1,21 @@
+<form *ngIf="!loading" #submitActivityForm="ngForm" (ngSubmit)="onSubmit()">
+  <div class="card">
+    <div class="card-block">
+      <h4 class="card-title">Discipline Options</h4>
+      <div class="row mt-4" *ngIf="gameSummary.publicData.turn.prompt.hasQuestions">
+        <div class="col-12">
+          <h6 class="card-subtitle mb-2 text-muted">Resolve the following prompts:</h6>
+          <app-prompt-selector
+            [prompt]="gameSummary.publicData.turn.prompt">
+          </app-prompt-selector>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-12">
+          <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<app-loading-spinner *ngIf="loading"></app-loading-spinner>

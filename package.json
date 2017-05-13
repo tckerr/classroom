@@ -23,7 +23,8 @@
     "core-js": "^2.4.1",
     "rxjs": "^5.1.0",
     "zone.js": "^0.8.4",
-    "@ng-bootstrap/ng-bootstrap": "^1.0.0-alpha.25"
+    "@ng-bootstrap/ng-bootstrap": "^1.0.0-alpha.25",
+    "t-json-viewer": "^1.0.3"
   },
   "devDependencies": {
     "@angular/cli": "1.0.2",

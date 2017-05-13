@@ -1,4 +1,4 @@
-<div *ngIf="details">
-  <pre id="details-{{gameId}}-{{actorId}}" class="detail-json">{{details | json}}</pre>
+<div *ngIf="gameSummary">
+  <t-json-viewer [json]="gameSummary.asJson()"></t-json-viewer>
 </div>
-<app-loading-spinner *ngIf="!details"></app-loading-spinner>
+<app-loading-spinner *ngIf="!gameSummary"></app-loading-spinner>

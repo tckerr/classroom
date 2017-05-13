@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from "@angular/core";
 import {GamesService} from "../../../finalsweek-api/game/games.service";
-import {GameDetail} from "../../../finalsweek-api/game/models/game-detail";
+import {GameSummary} from "../../../finalsweek-api/game/models/summary/game-summary";
 
 
 @Component({
@@ -10,7 +10,7 @@ import {GameDetail} from "../../../finalsweek-api/game/models/game-detail";
 })
 
 export class GameDetailComponent implements OnInit {
-  private details: GameDetail;
+  private gameSummary: GameSummary;
   @Input() public gameId: string;
   @Input() public actorId: string;
 
@@ -18,21 +18,21 @@ export class GameDetailComponent implements OnInit {
 
   }
 
-  private getDetails(gameId: string, actorId: string) {
+  private getSummary(gameId: string, actorId: string) {
     this.gamesService
       .details(gameId, actorId)
-      .subscribe(details => this.details = details)
+      .subscribe(details => this.gameSummary = details)
   }
 
   ngOnInit() {
-    this.getDetails(this.gameId, this.actorId);
+    this.getSummary(this.gameId, this.actorId);
   }
 
   ngOnChanges(changes: object) {
     try {
       let gameId = changes["gameId"].currentValue;
       let actorId = changes["actorId"].currentValue;
-      this.getDetails(gameId, actorId);
+      this.getSummary(gameId, actorId);
     } catch (e) {
       console.error("Error updating game detail data.", e);
     }
@@ -41,6 +41,6 @@ export class GameDetailComponent implements OnInit {
   private setDetails(gameId: string, actorId: string) {
     this.gameId = gameId;
     this.actorId = actorId;
-    this.getDetails(this.gameId, this.actorId);
+    this.getSummary(this.gameId, this.actorId);
   }
 }

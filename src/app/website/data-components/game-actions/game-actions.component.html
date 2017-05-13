@@ -1,37 +1,33 @@
-<app-loading-spinner *ngIf="loading"></app-loading-spinner>
+<div *ngIf="!loading">
 
-<form *ngIf="!loading" #submitActivityForm="ngForm" (ngSubmit)="submitActivity()">
   <div class="card">
     <div class="card-block">
       <h4 class="card-title">Turn Details</h4>
       <ol>
-        <li><strong>Game ID:</strong> {{gameId}}</li>
-        <li><strong>Actor ID:</strong> {{actorId}}</li>
-        <li><strong>Stage:</strong> {{stageType}}</li>
-        <li><strong>Phase:</strong> {{phaseType}}</li>
+        <li><strong>Game ID:</strong> {{accessor.gameId}}</li>
+        <li>
+          <strong>Actor ID:</strong>
+          <span *ngIf="accessor.currentTurnActor">
+            {{accessor.currentTurnActor.id}}
+          </span>
+        </li>
+        <li><strong>Stage:</strong> {{accessor.stageType}}</li>
+        <li><strong>Phase:</strong> {{accessor.phaseType}}</li>
       </ol>
     </div>
   </div>
 
-  <div class="mt-2"  *ngIf="actionType == ActionType.ActionCard">
-    <app-card-selector [cards]="actionCardHand"></app-card-selector>
+  <div class="mt-2" *ngIf="actionType == ActionType.ActionCard">
+    <app-classtime-action [gameSummary]="gameSummary"></app-classtime-action>
   </div>
 
-  <div class="card mt-2" *ngIf="actionType != ActionType.ActionCard">
-    <div class="card-block">
-      <h4 class="card-title">Action Options</h4>
-      <h6 class="card-subtitle mb-2 text-muted">
-        <span>Play an action card.</span>
-        <span *ngIf="actionType == ActionType.Discipline">Play a discipline action.</span>
-        <span *ngIf="actionType == ActionType.Base">Play a default action.</span>
-      </h6>
-    </div>
-  </div>
-  <div class="row mt-2">
-    <div class="col-12">
-      <button type="submit" class="btn btn-success">Submit</button>
-    </div>
+  <div class="mt-2" *ngIf="actionType == ActionType.Base">
+    <app-base-action [gameSummary]="gameSummary"></app-base-action>
   </div>
 
-</form>
+  <div class="mt-2" *ngIf="actionType == ActionType.Discipline">
+    <app-discipline-action [gameSummary]="gameSummary"></app-discipline-action>
+  </div>
 
+</div>
+<app-loading-spinner *ngIf="loading"></app-loading-spinner>
