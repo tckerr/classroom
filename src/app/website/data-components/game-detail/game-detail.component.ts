@@ -4,43 +4,21 @@ import {GameSummary} from "../../../finalsweek-api/game/models/summary/game-summ
 
 
 @Component({
-  selector: 'app-game-detail',
-  templateUrl: './game-detail.component.html',
-  styleUrls: ['./game-detail.component.css']
+  selector: "app-game-detail",
+  templateUrl: "./game-detail.component.html",
+  styleUrls: ["./game-detail.component.css"]
 })
 
 export class GameDetailComponent implements OnInit {
-  private gameSummary: GameSummary;
-  @Input() public gameId: string;
-  @Input() public actorId: string;
+  @Input() public gameSummary: GameSummary;
 
-  constructor(private gamesService: GamesService) {
-
-  }
-
-  private getSummary(gameId: string, actorId: string) {
-    this.gamesService
-      .details(gameId, actorId)
-      .subscribe(details => this.gameSummary = details)
-  }
-
-  ngOnInit() {
-    this.getSummary(this.gameId, this.actorId);
-  }
+  ngOnInit(): void {}
 
   ngOnChanges(changes: object) {
     try {
-      let gameId = changes["gameId"].currentValue;
-      let actorId = changes["actorId"].currentValue;
-      this.getSummary(gameId, actorId);
+      this.gameSummary = changes["gameSummary"].currentValue;
     } catch (e) {
       console.error("Error updating game detail data.", e);
     }
-  }
-
-  private setDetails(gameId: string, actorId: string) {
-    this.gameId = gameId;
-    this.actorId = actorId;
-    this.getSummary(this.gameId, this.actorId);
   }
 }

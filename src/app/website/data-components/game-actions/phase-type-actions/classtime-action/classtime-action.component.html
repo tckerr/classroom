@@ -1,34 +1,40 @@
-<div *ngIf="!loading">
+<div>
   <div class="card">
+    <div class="card-header">
+        <span>Action Options</span>
+        <app-loading-spinner [inline]="true" [spinnerWidth]="20" *ngIf="loading"></app-loading-spinner>
+    </div>
     <div class="card-block">
-      <h4 class="card-title">Action Options</h4>
-      <h6 class="card-subtitle mb-3 text-muted">
-        <span>Play an action card.</span>
-      </h6>
-      <div class="row mt-2">
-        <div class="col-12">
+      <div class="row">
+        <div [ngClass]="{
+          'col-3': prompt.hasQuestions,
+          'col-12': !prompt.hasQuestions
+        }">
+          <h6 class="card-subtitle mb-3 text-muted">
+            <span>Choose an action card.</span>
+          </h6>
           <app-card-selector
             [cards]="accessor.currentTurnActor.hand.actionCards"
             [selectedCardId]="selectedCardId"
-            [disabled]="prompt.hasQuestions">
+            [disabled]="prompt.hasQuestions || loading">
           </app-card-selector>
         </div>
-      </div>
-      <div class="row mt-4" *ngIf="prompt.hasQuestions">
-        <div class="col-12">
+        <div class="col-6" *ngIf="prompt.hasQuestions">
           <h6 class="card-subtitle mb-3 text-muted">Resolve the following prompts:</h6>
           <app-prompt-selector
-            [prompt]="prompt">
+            [prompt]="prompt"
+            [disabled]="loading">
           </app-prompt-selector>
         </div>
       </div>
+
       <div class="row mt-2">
         <div class="col-12">
           <form #submitActivityForm="ngForm" class="d-inline" (ngSubmit)="onSubmit()">
             <button
               type="submit"
               class="btn btn-success"
-              [disabled]="!selectedCardId">Submit</button>
+              [disabled]="!selectedCardId || loading">Submit</button>
           </form>
           <button
             *ngIf="prompt.hasQuestions"
@@ -40,4 +46,4 @@
     </div>
   </div>
 </div>
-<app-loading-spinner *ngIf="loading"></app-loading-spinner>
+

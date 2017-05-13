@@ -1,0 +1,27 @@
+<div class="card">
+
+  <div class="card-header">
+    <div class="row">
+      <div class="col-1">
+        <span>Turn Details</span>
+      </div>
+      <div class="col-11">
+        <small>
+          <span class="mr-2"><strong>Game ID:</strong> {{accessor.gameId}}</span>
+          <span class="mr-2"><strong>Stage:</strong> {{accessor.stageType}}</span>
+          <span><strong>Phase:</strong> {{accessor.phaseType}}</span>
+        </small>
+        <app-loading-spinner [inline]="true" [spinnerWidth]="20" *ngIf="loading"></app-loading-spinner>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-block">
+    <div class="row">
+      <div class="col-5">
+        <app-actor-list [actors]="accessor.actors" [currentTurnActor]="accessor.currentTurnActor"></app-actor-list>
+      </div>
+    </div>
+
+  </div>
+</div>

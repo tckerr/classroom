@@ -1,6 +1,6 @@
-<select
+<!--<select
   [(ngModel)]="selectedCard"
-  (change)="onSelect()"
+  (change)="onSelect(selectedCard)"
   class="form-control"
   [disabled]="disabled">
   <option
@@ -8,4 +8,32 @@
     [ngValue]="card">
     <span>{{card.template.name}}</span>
   </option>
-</select>
+</select>-->
+<div class="card-deck">
+  <ng-container *ngFor="let card of cards">
+    <div
+      *ngIf="(selectedCard && card.id == selectedCard.id) || !disabled"
+      class="card"
+      style="max-width: 20rem;"
+      [ngClass]="{'card-inverse card-primary': selectedCard && card.id == selectedCard.id}">
+      <div class="card-block">
+        <h4 class="card-title">{{card.template.name}}</h4>
+        <p class="card-text">{{card.template.description}}</p>
+      </div>
+      <div class="card-footer">
+        <small class="small card-text">
+          <strong>Trouble cost:</strong> {{card.template.troubleCost}}
+        </small>
+        <button
+          (click)="onSelect(card)"
+          *ngIf="!disabled"
+          class="btn btn-small float-right"
+          [ngClass]="{
+            'btn-secondary': selectedCard && card.id == selectedCard.id,
+            'btn-primary': !selectedCard || card.id != selectedCard.id
+           }">Select
+        </button>
+      </div>
+    </div>
+  </ng-container>
+</div>

@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, Input, OnInit} from "@angular/core";
 import {environment} from "../../../environments/environment";
 
 @Component({
@@ -8,6 +8,8 @@ import {environment} from "../../../environments/environment";
 })
 export class LoadingSpinnerComponent implements OnInit {
   private imageUrl: string;
+  @Input() public inline: boolean = false;
+  @Input() public spinnerWidth: number = 50;
 
   constructor() {
     this.imageUrl = environment.resources.loadingSpinners.standard

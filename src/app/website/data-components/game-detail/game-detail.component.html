@@ -1,4 +1,11 @@
-<div *ngIf="gameSummary">
-  <t-json-viewer [json]="gameSummary.asJson()"></t-json-viewer>
+<div class="card mt-2" *ngIf="gameSummary">
+  <div class="card-header">
+    <span>JSON</span>
+  </div>
+  <div class="card-block">
+    <div >
+      <t-json-viewer [json]="gameSummary.asJson()"></t-json-viewer>
+    </div>
+  </div>
 </div>
 <app-loading-spinner *ngIf="!gameSummary"></app-loading-spinner>

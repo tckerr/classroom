@@ -11,6 +11,7 @@ import {PromptSelection, PromptQuestion} from "../../../comm-services/models/pro
 export class PromptSelectorComponent implements OnInit, OnChanges {
 
   @Input() prompt: PromptSummary;
+  @Input() disabled: boolean = false;
   private questions: PromptQuestion[];
 
   constructor(private promptSelectionNotificationService: PromptSelectionNotificationService) { }

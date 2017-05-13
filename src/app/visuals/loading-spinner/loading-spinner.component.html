@@ -1,8 +1,14 @@
-<div class="row">
+<div *ngIf="!inline" class="row">
   <div class="centered">
     <img
       class="spinner"
+      [ngStyle]="{'width': spinnerWidth+'px'}"
       src="{{imageUrl}}">
   </div>
 </div>
 
+<img
+  *ngIf="inline"
+  class="spinner"
+  [ngStyle]="{'width': spinnerWidth+'px'}"
+  src="{{imageUrl}}">

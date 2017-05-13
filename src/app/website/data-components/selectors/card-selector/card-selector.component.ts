@@ -14,8 +14,9 @@ export class CardSelectorComponent implements OnInit {
 
   constructor(private actorIdSelectionService: CardIdSelectionService) { }
 
-  public onSelect(){
-    this.actorIdSelectionService.broadcastSelection(this.selectedCard.id);
+  public onSelect(selectedCard){
+    this.selectedCard = selectedCard;
+    this.actorIdSelectionService.broadcastSelection(selectedCard.id);
   }
 
   ngOnInit() {

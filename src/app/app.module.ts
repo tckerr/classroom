@@ -28,6 +28,8 @@ import { ClasstimeActionComponent } from './website/data-components/game-actions
 import { BaseActionComponent } from './website/data-components/game-actions/phase-type-actions/base-action/base-action.component';
 import { PromptSelectorComponent } from './website/data-components/selectors/prompt-selector/prompt-selector.component';
 import { DisciplineActionComponent } from './website/data-components/game-actions/phase-type-actions/discipline-action/discipline-action.component';
+import { GameBoardComponent } from './website/views/lobby/game-detail-view/game-board/game-board.component';
+import { ActorListComponent } from './website/views/lobby/game-detail-view/game-board/actor-list/actor-list.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,9 @@ import { DisciplineActionComponent } from './website/data-components/game-action
     ClasstimeActionComponent,
     BaseActionComponent,
     PromptSelectorComponent,
-    DisciplineActionComponent
+    DisciplineActionComponent,
+    GameBoardComponent,
+    ActorListComponent
   ],
   imports: [
     BrowserModule,

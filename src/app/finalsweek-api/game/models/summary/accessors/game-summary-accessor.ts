@@ -24,4 +24,7 @@ export class GameSummaryAccessor {
     throw Error(`Actor: ${id} not found.`);
   }
 
+  public get actors(): ActorSummary[]{
+    return this.gameSummary.publicData.actors;
+  }
 }
