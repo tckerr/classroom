@@ -1,4 +1,3 @@
 export class GameDetail {
-  constructor(public json: Object) {
-  }
+  constructor(public json: any) {}
 }

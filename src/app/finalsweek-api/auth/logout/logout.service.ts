@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
 import {environment} from "../../../../environments/environment";
 import {Http} from "@angular/http";
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class LogoutService {
@@ -10,10 +11,9 @@ export class LogoutService {
     this.url = environment.finalsweekApi.endpoints.auth.logout;
   }
 
-  logout(): Promise<boolean> {
+  logout(): Observable<boolean> {
     return this.http
       .post(this.url, {})
-      .map(r => r.ok)
-      .toPromise();
+      .map(r => r.ok);
   }
 }

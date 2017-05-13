@@ -19,7 +19,7 @@ export class LoginFormComponent implements OnInit {
     this.submitted = false;
   }
 
-  login() {
+  public login() {
     this.submitted = true;
     this.authService
       .login(this.model)

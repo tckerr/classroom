@@ -16,7 +16,7 @@ export class GamesListComponent implements OnInit {
     this.loading = true;
     this.gamesService
       .summaryList()
-      .then(r => {
+      .subscribe(r => {
         this.gameSummaries = r;
         this.loading = false;
       });

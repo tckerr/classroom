@@ -3,6 +3,7 @@ import {environment} from "../../../../environments/environment";
 import {Http} from "@angular/http";
 import {RegistrationModel} from "../models/registration-model";
 import {RegistrationResult} from "../models/registration-result";
+import {Observable, ObservableInput} from "rxjs/Observable";
 
 @Injectable()
 export class RegistrationService {
@@ -12,12 +13,11 @@ export class RegistrationService {
     this.registrationUrl = environment.finalsweekApi.endpoints.auth.registration;
   }
 
-  public register(model: RegistrationModel): Promise<RegistrationResult> {
+  public register(model: RegistrationModel): Observable<RegistrationResult> {
     return this.http
       .post(this.registrationUrl, model)
       .map(r => this.responseToRegistrationSuccess(r))
-      .toPromise()
-      .catch(e => this.responseToRegistrationError(e))
+      .catch(e => Observable.from([this.responseToRegistrationError(e)]));
   }
 
   private responseToRegistrationError(exception) {

@@ -22,7 +22,8 @@ export class LoginService {
   }
 
   public login(model: Credentials): Observable<LoginResult> {
-    return this.http.post(this.loginUrl, model)
+    return this.http
+      .post(this.loginUrl, model)
       .map(r => this.responseToLoginSuccess(r))
       .catch(e => Observable.from([this.responseToLoginError(e)]));
   }

@@ -22,6 +22,7 @@ import {GameDetailComponent} from "./website/data-components/game-detail/game-de
 import {LoadingSpinnerComponent} from "./visuals/loading-spinner/loading-spinner.component";
 import {RegistrationFormComponent} from "./website/data-components/registration-form/registration-form.component";
 import {GameActionsComponent} from "./website/data-components/game-actions/game-actions.component";
+import { CardSelectorComponent } from './website/data-components/card-selector/card-selector.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import {GameActionsComponent} from "./website/data-components/game-actions/game-
     NewGameFormComponent,
     LoadingSpinnerComponent,
     RegistrationFormComponent,
-    GameActionsComponent
+    GameActionsComponent,
+    CardSelectorComponent
   ],
   imports: [
     BrowserModule,

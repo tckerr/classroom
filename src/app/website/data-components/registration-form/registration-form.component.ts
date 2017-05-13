@@ -16,9 +16,8 @@ export class RegistrationFormComponent implements OnInit {
   }
 
   public register() {
-    return this.registrationService
-      .register(this.model)
-      .then(r => console.log(r))
+    let registrationStream = this.registrationService.register(this.model);
+    registrationStream.subscribe(r => console.log(r));
   }
 
   ngOnInit() {

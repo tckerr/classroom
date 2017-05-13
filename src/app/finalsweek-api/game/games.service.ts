@@ -20,12 +20,11 @@ export class GamesService {
     this.detailUrlTemplate = environment.finalsweekApi.endpoints.game.detail;
   }
 
-  public summaryList(): Promise<GameSummary[]> {
+  public summaryList(): Observable<GameSummary[]> {
     let requestToGameSummary = r => r.json().map(summary => new GameSummary(summary.id, summary.actors));
     return this.http
       .get(this.summaryListUrl)
-      .map(requestToGameSummary)
-      .toPromise();
+      .map(requestToGameSummary);
   }
 
   public details(gameId: string, actorId: string): Observable<GameDetail> {
@@ -34,13 +33,12 @@ export class GamesService {
       .map(r => new GameDetail(r.json()));
   }
 
-  public create(model: GameCreateModel): Promise<GameDetail> {
+  public create(model: GameCreateModel): Observable<GameDetail> {
     let postData = {
       player_count: model.playerCount
     };
     return this.http
       .post(this.createUrl, postData)
-      .map(r => new GameDetail(r.json()))
-      .toPromise();
+      .map(r => new GameDetail(r.json()));
   }
 }

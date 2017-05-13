@@ -37,17 +37,17 @@ export class AuthService {
     this.setAuthenticated(false);
   }
 
-  login(credentials: Credentials): Observable<LoginResult> {
-    const loginStream = this.loginService.login(credentials);
-    loginStream.subscribe(result => {
-      if (result.success)
-        this.setToken(result.token);
-    });
-    return loginStream;
+  public login(credentials: Credentials): Observable<LoginResult> {
+    return this.loginService
+      .login(credentials)
+      .do(result => {
+        if (result.success)
+          this.setToken(result.token);
+      });
   }
 
-  logout() {
-    return this.logoutService.logout().then(result => {
+  public logout() {
+    return this.logoutService.logout().subscribe(result => {
       if (result)
         this.clearToken();
       else
@@ -55,7 +55,7 @@ export class AuthService {
     });
   }
 
-  get token() {
+  public get token() {
     return localStorage.getItem('token');
   }
 }
