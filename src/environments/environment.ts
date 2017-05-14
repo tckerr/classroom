@@ -11,12 +11,14 @@ export const environment = {
     loadingSpinners: {
       network: "https://s-media-cache-ak0.pinimg.com/originals/a4/f2/cb/a4f2cb80ff2ae2772e80bf30e9d78d4c.gif",
       standard: "https://s-media-cache-ak0.pinimg.com/originals/0c/44/da/0c44dacf1b038014a6f941131c5e8aa2.gif",
+      circular: "http://www.shopirvinespectrumcenter.com/images/spinner.gif",
     }
   },
   defaultGameConfig: {
     playerCount: 4,
     minPlayers: 2,
-    maxPlayers: 16
+    maxPlayers: 16,
+    seed: "m3hIOa1Xt42ojuTZngHuQThEGOoOh3TvNa2klTh",
   },
   finalsweekApi: {
     endpoints: {

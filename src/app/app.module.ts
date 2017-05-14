@@ -33,6 +33,7 @@ import { ActorListComponent } from "./website/views/lobby/game-detail/game-actio
 import { SeatGridComponent } from "./website/views/lobby/game-detail/game-actions/game-board/seat-grid/seat-grid.component";
 import {TJsonViewerModule} from "t-json-viewer";
 import {GameJsonComponent} from "./website/views/lobby/game-detail/game-actions/game-json/game-json.component";
+import {NgbdPopoverConfig} from "./visuals/ngbd-popover-config";
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import {GameJsonComponent} from "./website/views/lobby/game-detail/game-actions/
     DisciplineActionComponent,
     GameBoardComponent,
     ActorListComponent,
-    SeatGridComponent
+    SeatGridComponent,
+    NgbdPopoverConfig
   ],
   imports: [
     TJsonViewerModule,
@@ -69,7 +71,7 @@ import {GameJsonComponent} from "./website/views/lobby/game-detail/game-actions/
     AuthModule,
     FinalsweekApiModule
   ],
-  providers: [],
+  providers: [NgbdPopoverConfig],
   bootstrap: [AppComponent]
 })
 export class AppModule {

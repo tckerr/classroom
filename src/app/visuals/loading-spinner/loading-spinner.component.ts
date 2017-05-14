@@ -12,7 +12,7 @@ export class LoadingSpinnerComponent implements OnInit {
   @Input() public spinnerWidth = 50;
 
   constructor() {
-    this.imageUrl = environment.resources.loadingSpinners.standard;
+    this.imageUrl = environment.resources.loadingSpinners.circular;
   }
 
   ngOnInit() {

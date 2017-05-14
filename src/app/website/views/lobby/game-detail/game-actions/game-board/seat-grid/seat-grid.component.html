@@ -5,8 +5,17 @@
          [ngClass]="{'card-inverse card-primary': isCurrentTurnActor(student)}">
       <div
         class="card-outline-info text-center"
+        style="cursor: pointer"
         *ngIf="student && student.actor">
-        <div class="card-block p-1">
+        <ng-template #statsPopover>
+          <div class="text-primary" style="max-height: 300px; overflow: auto">
+            <t-json-viewer [json]="student.actor.stats"></t-json-viewer>
+            <t-json-viewer [json]="student.actor"></t-json-viewer>
+          </div>
+        </ng-template>
+        <div
+          class="card-block p-1"
+          [ngbPopover]="statsPopover">
           <div>
             <small class="text-info"><strong>{{student.actor.name}}</strong></small>
           </div>

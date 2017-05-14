@@ -1,19 +1,13 @@
 <div class="card">
 
   <div class="card-header">
-    <div class="row">
-      <div class="col-1">
-        <span>Turn Details</span>
-      </div>
-      <div class="col-11">
-        <small>
-          <span class="mr-2"><strong>Game ID:</strong> {{accessor.gameId}}</span>
-          <span class="mr-2"><strong>Stage:</strong> {{accessor.stageType}}</span>
-          <span><strong>Phase:</strong> {{accessor.phaseType}}</span>
-        </small>
-        <app-loading-spinner [inline]="true" [spinnerWidth]="20" *ngIf="loading"></app-loading-spinner>
-      </div>
-    </div>
+      <span class="mr-3">Turn Details</span>
+      <small class="text-muted">
+        <span class="mr-2"><strong>Game ID:</strong> {{accessor.gameId}}</span>
+        <span class="mr-2"><strong>Stage:</strong> {{accessor.stageType}}</span>
+        <span><strong>Phase:</strong> {{accessor.phaseType}}</span>
+      </small>
+      <app-loading-spinner [inline]="true" [spinnerWidth]="20" *ngIf="loading"></app-loading-spinner>
   </div>
 
   <div class="card-block">

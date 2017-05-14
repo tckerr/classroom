@@ -1,11 +1,21 @@
-<ul class="nav flex-column text-center">
-  <li class="nav-item">
-    <a class="nav-link" routerLink="/lobby/games/">Games List</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link active" routerLink="/lobby/games/new">New Game</a>
-  </li>
-  <li class="nav-item mt-5">
-    <app-logout-button></app-logout-button>
-  </li>
-</ul>
+<nav class="navbar navbar-toggleable-xl navbar-inverse bg-inverse p-1">
+  <div class="collapse navbar-collapse col-lg-8 offset-lg-2">
+    <span class="navbar-brand">Classroom</span>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a
+        class="nav-link"
+        routerLink="/lobby/games/list"
+        routerLinkActive="active">Games List</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"
+        routerLink="/lobby/games/new"
+        routerLinkActive="active">New Game</a>
+      </li>
+    </ul>
+    <span class="navbar-text ml-auto">
+      <app-logout-button></app-logout-button>
+    </span>
+  </div>
+</nav>

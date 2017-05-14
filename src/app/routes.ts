@@ -28,7 +28,12 @@ export const LobbyRoute = {
       path:     "games",
       children: [
         {
-          path:      "",
+          path:       "",
+          pathMatch:  "full",
+          redirectTo: "list"
+        },
+        {
+          path:      "list",
           component: GamesListComponent
         },
         {

@@ -1,15 +1,62 @@
 <form #newGameForm="ngForm" (ngSubmit)="createGame()" *ngIf="!loading">
-  <div class="form-group">
-    <label for="totalPlayers">Total Players</label>
-    <input [(ngModel)]="model.playerCount"
-           type="number"
-           min="{{minPlayers}}"
-           max="{{maxPlayers}}"
-           class="form-control"
-           name="totalPlayers"
-           id="totalPlayers"
-           required>
+  <div class="form-group row">
+    <label for="totalPlayers" class="col-form-label col-2">Total players</label>
+    <div class="col-2">
+      <input [(ngModel)]="model.playerCount"
+             type="number"
+             min="{{minPlayers}}"
+             max="{{maxPlayers}}"
+             class="form-control"
+             name="totalPlayers"
+             id="totalPlayers"
+             required>
+    </div>
   </div>
-  <button type="submit" class="btn btn-success">Create</button>
+  <div class="form-group row">
+    <label for="seed" class="col-form-label col-2">Game seed</label>
+    <div class="col-6">
+      <div class="input-group">
+        <input [(ngModel)]="model.seed"
+               type="text"
+               class="form-control"
+               name="seed"
+               id="seed"
+               spellcheck="false"
+               required>
+        <span class="input-group-btn" *ngIf="model.seed != defaultSeed">
+            <button
+              class="btn btn-success"
+              (click)="resetSeed()"
+              type="button">Reset</button>
+          </span>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="input-group">
+        <label for="seedLength" class="input-group-addon">
+          Seed length
+        </label>
+        <input [(ngModel)]="seedLength"
+               type="number"
+               class="form-control"
+               name="seedLength"
+               id="seedLength">
+        <span class="input-group-btn">
+            <button
+              class="btn btn-primary"
+              (click)="generateRandomSeed(seedLength)"
+              type="button">Random</button>
+          </span>
+      </div>
+    </div>
+
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-2 offset-2">
+      <button type="submit" class="btn btn-success btn-block">Create</button>
+    </div>
+  </div>
+
 </form>
 <app-loading-spinner *ngIf="loading"></app-loading-spinner>

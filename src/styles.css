@@ -5,3 +5,6 @@ body{
 button {
   cursor: pointer;
 }
+.bg-light{
+  background-color: #eee;
+}

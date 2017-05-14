@@ -49,8 +49,9 @@ export class BaseActionComponent implements OnInit, OnChanges, ActionSubmitter {
   }
 
   protected refresh() {
+    this.loading = true;
     this.gamesService
-      .details(this.accessor.gameId, this.accessor.currentTurnActor.id)
+      .details(this.accessor.gameId, this.accessor.currentTurnActor.id, true)
       .subscribe(gameSummary => this.broadcastUpdate(gameSummary));
   }
 

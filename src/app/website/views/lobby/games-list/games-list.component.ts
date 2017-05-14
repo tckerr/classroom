@@ -22,6 +22,10 @@ export class GamesListComponent implements OnInit {
       });
   }
 
+  getMetadataKeys(metadata: {}) {
+    return Object.keys(metadata);
+  }
+
   ngOnInit() {
 
   }

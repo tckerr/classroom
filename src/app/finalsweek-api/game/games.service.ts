@@ -19,9 +19,10 @@ export class GamesService {
   }
 
   public summaryList(): Observable<GameOverviewSummary[]> {
-    let requestToGameSummary = r => r.json().map(summary => new GameOverviewSummary(summary.id, summary.actors));
+    let requestToGameSummary = r => r.json().map(summary => new GameOverviewSummary(summary));
     return this.http
       .get(this.summaryListUrl)
+      .do(r => console.log(r))
       .map(requestToGameSummary);
   }
 
@@ -33,7 +34,8 @@ export class GamesService {
 
   public create(model: GameCreateModel): Observable<GameSummary> {
     let postData = {
-      player_count: model.playerCount
+      player_count: model.playerCount,
+      seed: model.seed
     };
     return this.http
       .post(this.createUrl, postData)

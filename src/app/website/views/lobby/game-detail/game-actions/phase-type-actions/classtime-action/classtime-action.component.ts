@@ -41,10 +41,21 @@ export class ClasstimeActionComponent extends BaseActionComponent implements OnI
   ngOnChanges(changes: SimpleChanges): void {
     this.recentlyClosed = {};
     super.ngOnChanges(changes);
+    if (!this.prompt.hasQuestions) {
+      this.selectedCardId = null;
+    }
+  }
+
+  onSubmit(): any {
+    return super.onSubmit();
   }
 
   private get prompt() {
     return this.gameSummary.publicData.turn.prompt;
+  }
+
+  public get collapsedCardSection(){
+    return this.loading || this.prompt.hasQuestions;
   }
 
   public buildAction() {
