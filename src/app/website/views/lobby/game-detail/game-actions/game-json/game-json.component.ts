@@ -1,13 +1,13 @@
 import {Component, Input, OnChanges, OnInit} from "@angular/core";
-import {GameSummary} from "../../../finalsweek-api/game/models/summary/game-summary";
+import {GameSummary} from "../../../../../../finalsweek-api/game/models/summary/game-summary";
 
 @Component({
-  selector:    "app-game-detail",
-  templateUrl: "./game-detail.component.html",
-  styleUrls:   ["./game-detail.component.css"]
+  selector:    "app-game-json",
+  templateUrl: "./game-json.component.html",
+  styleUrls:   ["./game-json.component.css"]
 })
 
-export class GameDetailComponent implements OnInit, OnChanges {
+export class GameJsonComponent implements OnInit, OnChanges {
   @Input() public gameSummary: GameSummary;
 
   ngOnInit(): void {

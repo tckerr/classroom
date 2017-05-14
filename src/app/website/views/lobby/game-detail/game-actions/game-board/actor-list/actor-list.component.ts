@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {ActorSummary} from "../../../../../../finalsweek-api/game/models/summary/actor-summary";
+import {ActorSummary} from "../../../../../../../finalsweek-api/game/models/summary/actor-summary";
 
 @Component({
   selector:    "app-actor-list",

@@ -1,6 +1,6 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
-import {GameSummaryAccessor} from "../../../../../finalsweek-api/game/models/summary/accessors/game-summary-accessor";
-import {GameSummary} from "../../../../../finalsweek-api/game/models/summary/game-summary";
+import {GameSummaryAccessor} from "../../../../../../finalsweek-api/game/models/summary/accessors/game-summary-accessor";
+import {GameSummary} from "../../../../../../finalsweek-api/game/models/summary/game-summary";
 
 @Component({
   selector:    "app-game-board",

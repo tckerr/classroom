@@ -1,7 +1,7 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
-import {SeatSummary} from "../../../../../../finalsweek-api/game/models/summary/seat-summary";
-import {StudentSummary} from "../../../../../../finalsweek-api/game/models/summary/student-summary";
-import {ActorSummary} from "../../../../../../finalsweek-api/game/models/summary/actor-summary";
+import {SeatSummary} from "../../../../../../../finalsweek-api/game/models/summary/seat-summary";
+import {StudentSummary} from "../../../../../../../finalsweek-api/game/models/summary/student-summary";
+import {ActorSummary} from "../../../../../../../finalsweek-api/game/models/summary/actor-summary";
 
 @Component({
   selector:    "app-seat-grid",

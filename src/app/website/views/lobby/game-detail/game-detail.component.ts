@@ -3,11 +3,11 @@ import {ActivatedRoute} from "@angular/router";
 import {Subscription} from "rxjs/Subscription";
 
 @Component({
-  selector:    "app-game-detail-view",
-  templateUrl: "./game-detail-view.component.html",
-  styleUrls:   ["./game-detail-view.component.css"]
+  selector:    "app-game-detail",
+  templateUrl: "./game-detail.component.html",
+  styleUrls:   ["./game-detail.component.css"]
 })
-export class GameDetailViewComponent implements OnInit, OnDestroy {
+export class GameDetailComponent implements OnInit, OnDestroy {
   private sub: Subscription;
   private gameId: string;
   private actorId: string;

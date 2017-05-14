@@ -1,12 +1,12 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
-import {PromptSelectionNotificationService} from "../../../../comm-services/prompt-selection-notification.service";
-import {GameSummary} from "../../../../../finalsweek-api/game/models/summary/game-summary";
-import {GameSummaryUpdateNotifierService} from "../../../../comm-services/game-summary-update-notification.service";
-import {ActivitiesService} from "../../../../../finalsweek-api/game/activities.service";
-import {PromptSummaryAccessor} from "../../../../../finalsweek-api/game/models/summary/accessors/prompt-summary-accessor";
+import {PromptSelectionNotificationService} from "../../../../../../comm-services/prompt-selection-notification.service";
+import {GameSummary} from "../../../../../../../finalsweek-api/game/models/summary/game-summary";
+import {GameSummaryUpdateNotifierService} from "../../../../../../comm-services/game-summary-update-notification.service";
+import {ActivitiesService} from "../../../../../../../finalsweek-api/game/activities.service";
+import {PromptSummaryAccessor} from "../../../../../../../finalsweek-api/game/models/summary/accessors/prompt-summary-accessor";
 import {BaseActionComponent} from "../base-action/base-action.component";
-import {PromptSelection} from "../../../../comm-services/models/prompt";
-import {GamesService} from "../../../../../finalsweek-api/game/games.service";
+import {PromptSelection} from "../../../../../../comm-services/models/prompt";
+import {GamesService} from "../../../../../../../finalsweek-api/game/games.service";
 
 @Component({
   selector:    "app-discipline-action",

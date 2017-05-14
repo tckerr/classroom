@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {CardIdSelectionService} from "../../../comm-services/card-id-selection-notification.service";
+import {CardIdSelectionService} from "../../../../../../../comm-services/card-id-selection-notification.service";
 
 @Component({
   selector:    "app-card-selector",

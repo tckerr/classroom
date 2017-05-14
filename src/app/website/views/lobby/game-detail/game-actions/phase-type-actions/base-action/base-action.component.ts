@@ -1,10 +1,10 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
-import {GameSummary} from "../../../../../finalsweek-api/game/models/summary/game-summary";
-import {GameSummaryAccessor} from "../../../../../finalsweek-api/game/models/summary/accessors/game-summary-accessor";
+import {GameSummary} from "../../../../../../../finalsweek-api/game/models/summary/game-summary";
+import {GameSummaryAccessor} from "../../../../../../../finalsweek-api/game/models/summary/accessors/game-summary-accessor";
 import {ActionSubmitter} from "../action-submitter";
-import {GameSummaryUpdateNotifierService} from "../../../../comm-services/game-summary-update-notification.service";
-import {ActivitiesService} from "../../../../../finalsweek-api/game/activities.service";
-import {GamesService} from "../../../../../finalsweek-api/game/games.service";
+import {GameSummaryUpdateNotifierService} from "../../../../../../comm-services/game-summary-update-notification.service";
+import {ActivitiesService} from "../../../../../../../finalsweek-api/game/activities.service";
+import {GamesService} from "../../../../../../../finalsweek-api/game/games.service";
 
 @Component({
   selector:    "app-base-action",

@@ -1,7 +1,7 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
-import {PromptSummary} from "../../../../finalsweek-api/game/models/summary/prompt-summary";
-import {PromptSelectionNotificationService} from "../../../comm-services/prompt-selection-notification.service";
-import {PromptQuestion, PromptSelection} from "../../../comm-services/models/prompt";
+import {PromptSummary} from "../../../../../../../../finalsweek-api/game/models/summary/prompt-summary";
+import {PromptSelectionNotificationService} from "../../../../../../../comm-services/prompt-selection-notification.service";
+import {PromptQuestion, PromptSelection} from "../../../../../../../comm-services/models/prompt";
 
 @Component({
   selector:    "app-prompt-selector",
