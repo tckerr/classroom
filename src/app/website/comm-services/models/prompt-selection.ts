@@ -3,7 +3,7 @@ export class PromptOption{
 }
 
 export class PromptQuestion{
-  constructor(public key: string, public options: any[], public disabled: boolean, selected_option: PromptOption = null){}
+  constructor(public key: string, public options: any[], public disabled: boolean, public selected_option: PromptOption = null){}
 }
 
 export class PromptSelection {

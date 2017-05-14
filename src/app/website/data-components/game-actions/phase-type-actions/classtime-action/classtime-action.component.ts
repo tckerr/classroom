@@ -15,6 +15,7 @@ import {GamesService} from "../../../../../finalsweek-api/game/games.service";
   providers: [CardIdSelectionService, PromptSelectionNotificationService]
 })
 export class ClasstimeActionComponent extends BaseActionComponent implements OnChanges {
+
   private selectedCardId: string;
   private recentlyClosed: {};
   private promptSummaryAccessor: PromptSummaryAccessor;

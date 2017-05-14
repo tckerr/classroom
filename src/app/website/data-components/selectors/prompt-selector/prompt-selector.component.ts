@@ -39,11 +39,14 @@ export class PromptSelectorComponent implements OnInit, OnChanges {
       this.onSelect(question, question.options[0].id)
     }
     for (let key in prompt.closed) {
-      let question = new PromptQuestion(key, prompt.closed[key].options, true);
+      let question = new PromptQuestion(key, prompt.closed[key].options, true, prompt.closed[key].selected_option);
       this.questions.push(question);
       this.onSelect(question, prompt.closed[key].selected_option.id)
     }
     this.questions.reverse();
+  }
+  public amSelected(question:PromptQuestion, optionId: string){
+      return question.selected_option && optionId == question.selected_option.id;
   }
 
   public onSelect(question:PromptQuestion, optionId: string){
@@ -57,6 +60,8 @@ export class PromptSelectorComponent implements OnInit, OnChanges {
     if (!selectedOption){
       console.error("Option", optionId, "not found in", question.options);
       throw Error("Option was not found in question options list.")
+    } else {
+      console.log("Selecting", selectedOption, "via option", optionId, "for question", question.key)
     }
     let promptSelection = new PromptSelection(question, selectedOption);
     this.promptSelectionNotificationService.broadcastPromptSelection(promptSelection);

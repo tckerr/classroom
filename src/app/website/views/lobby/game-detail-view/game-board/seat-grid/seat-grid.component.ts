@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from "@angular/core";
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
 import {SeatSummary} from "../../../../../../finalsweek-api/game/models/summary/seat-summary";
 import {StudentSummary} from "../../../../../../finalsweek-api/game/models/summary/student-summary";
 import {ActorSummary} from "../../../../../../finalsweek-api/game/models/summary/actor-summary";
@@ -8,7 +8,7 @@ import {ActorSummary} from "../../../../../../finalsweek-api/game/models/summary
   templateUrl: "./seat-grid.component.html",
   styleUrls: ["./seat-grid.component.css"]
 })
-export class SeatGridComponent implements OnInit {
+export class SeatGridComponent implements OnInit, OnChanges {
 
   @Input() public seats: SeatSummary[];
   @Input() private currentTurnActor: ActorSummary;
@@ -21,8 +21,15 @@ export class SeatGridComponent implements OnInit {
 
   ngOnInit() {
     this.initializeGrid();
-    for (let seat of this.seats){
-      this.grid[seat.row][seat.column] = seat.student
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    try {
+      this.seats = changes["seats"].currentValue;
+      this.currentTurnActor = changes["currentTurnActor"].currentValue;
+      this.initializeGrid();
+    } catch (e) {
+      console.error("Error updating game detail data.", e);
     }
   }
 
@@ -56,6 +63,9 @@ export class SeatGridComponent implements OnInit {
     }
     this.maxRow = maxRow;
     this.maxCol = maxCol;
+    for (let seat of this.seats){
+      this.grid[seat.row][seat.column] = seat.student
+    }
   }
 
 }

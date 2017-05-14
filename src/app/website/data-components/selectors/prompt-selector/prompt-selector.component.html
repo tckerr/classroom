@@ -9,10 +9,10 @@
           class="form-control"
           [disabled]="question.disabled || disabled">
           <option
-            *ngFor="let option of question.options; let i = index;"
+            *ngFor="let option of question.options"
             [value]="option.id"
-            [selected]="i == 0">
-            <span>{{option.display}}</span>
+            [selected]="amSelected(question, option.id)">
+            <span>{{option.display}} ({{option.id}})</span>
           </option>
         </select>
       </div>
