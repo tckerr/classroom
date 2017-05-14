@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {ActionType} from "../models/definitions";
+import {ActionType} from "../definitions";
 
 @Injectable()
 export class PhaseActionTypeResolverService {

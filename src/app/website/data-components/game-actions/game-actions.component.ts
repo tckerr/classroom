@@ -4,7 +4,7 @@ import {ActivitiesService} from "../../../finalsweek-api/game/activities.service
 import {GameSummary} from "../../../finalsweek-api/game/models/summary/game-summary";
 import {GameSummaryAccessor} from "app/finalsweek-api/game/models/summary/accessors/game-summary-accessor";
 import {PhaseActionTypeResolverService} from "../../../finalsweek-api/game/helpers/phase-action-type-resolver.service";
-import {ActionType} from "../../../finalsweek-api/game/models/definitions";
+import {ActionType} from "../../../finalsweek-api/game/definitions";
 import {GameSummaryUpdateNotifierService} from "../../comm-services/game-summary-update-notifier.service";
 
 // TODO: move to views

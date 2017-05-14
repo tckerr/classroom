@@ -3,10 +3,8 @@ import {Http} from "@angular/http";
 import {environment} from "../../../environments/environment";
 import {GameOverviewSummary} from "./models/game-overview-summary";
 import {GameSummary} from "./models/summary/game-summary";
-import {GameCreateModel} from "./models/game-create-model";
+import {GameCreateModel} from "./models/creation-models/game-create-model";
 import {Observable} from "rxjs/Rx";
-
-//TODO: replace environments with bootstrap params
 
 @Injectable()
 export class GamesService {

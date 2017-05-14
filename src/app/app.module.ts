@@ -23,7 +23,6 @@ import {LoadingSpinnerComponent} from "./visuals/loading-spinner/loading-spinner
 import {RegistrationFormComponent} from "./website/data-components/registration-form/registration-form.component";
 import {GameActionsComponent} from "./website/data-components/game-actions/game-actions.component";
 import { CardSelectorComponent } from './website/data-components/selectors/card-selector/card-selector.component';
-import { TJsonViewerModule } from 't-json-viewer';
 import { ClasstimeActionComponent } from './website/data-components/game-actions/phase-type-actions/classtime-action/classtime-action.component';
 import { BaseActionComponent } from './website/data-components/game-actions/phase-type-actions/base-action/base-action.component';
 import { PromptSelectorComponent } from './website/data-components/selectors/prompt-selector/prompt-selector.component';
@@ -31,6 +30,8 @@ import { DisciplineActionComponent } from './website/data-components/game-action
 import { GameBoardComponent } from './website/views/lobby/game-detail-view/game-board/game-board.component';
 import { ActorListComponent } from './website/views/lobby/game-detail-view/game-board/actor-list/actor-list.component';
 import { SeatGridComponent } from './website/views/lobby/game-detail-view/game-board/seat-grid/seat-grid.component';
+import {TJsonViewerModule} from 't-json-viewer';
+import {GameCreateModel} from "./finalsweek-api/game/models/creation-models/game-create-model";
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { SeatGridComponent } from './website/views/lobby/game-detail-view/game-b
     NgbModule.forRoot(),
     AuthModule,
     FinalsweekApiModule,
+    GameCreateModel
   ],
   providers: [],
   bootstrap: [AppComponent]
