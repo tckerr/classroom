@@ -58,6 +58,7 @@ import { SeatGridComponent } from './website/views/lobby/game-detail-view/game-b
     SeatGridComponent
   ],
   imports: [
+    TJsonViewerModule,
     BrowserModule,
     FormsModule,
     HttpModule,
@@ -65,7 +66,6 @@ import { SeatGridComponent } from './website/views/lobby/game-detail-view/game-b
     NgbModule.forRoot(),
     AuthModule,
     FinalsweekApiModule,
-    TJsonViewerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
