@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from "@angular/core";
 import {Subject} from "rxjs/Subject";
 import {GameSummary} from "../../finalsweek-api/game/models/summary/game-summary";
 

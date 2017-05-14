@@ -1,14 +1,13 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnDestroy, OnInit} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
 import {Subscription} from "rxjs/Subscription";
 
-
 @Component({
-  selector: 'app-game-detail-view',
-  templateUrl: './game-detail-view.component.html',
-  styleUrls: ['./game-detail-view.component.css']
+  selector:    "app-game-detail-view",
+  templateUrl: "./game-detail-view.component.html",
+  styleUrls:   ["./game-detail-view.component.css"]
 })
-export class GameDetailViewComponent implements OnInit {
+export class GameDetailViewComponent implements OnInit, OnDestroy {
   private sub: Subscription;
   private gameId: string;
   private actorId: string;
@@ -17,8 +16,8 @@ export class GameDetailViewComponent implements OnInit {
   }
 
   private updateRouteParams(params) {
-    this.gameId = params['gameId'];
-    this.actorId = params['actorId'];
+    this.gameId = params["gameId"];
+    this.actorId = params["actorId"];
   }
 
   ngOnInit() {

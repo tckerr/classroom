@@ -4,7 +4,7 @@ export class StatsSummary {
   public torment: number;
   public grades: number;
 
-  constructor(data: any){
+  constructor(data: any) {
     this.popularity = data.popularity;
     this.trouble = data.trouble;
     this.torment = data.torment;

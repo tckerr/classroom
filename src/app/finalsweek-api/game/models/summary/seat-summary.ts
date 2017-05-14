@@ -4,10 +4,10 @@ export class SeatSummary {
   public column: number;
   public student: StudentSummary;
 
-  constructor(data: any){
+  constructor(data: any) {
     this.row = data.row;
     this.column = data.column;
-    if(data.student){
+    if (data.student) {
       this.student = new StudentSummary(data.student);
     }
   }

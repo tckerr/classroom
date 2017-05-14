@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from "@angular/core";
 import {ActionType} from "../definitions";
 
 @Injectable()
 export class PhaseActionTypeResolverService {
 
-  constructor() { }
+  constructor() {
+  }
 
   public resolve(phaseType: string) {
     switch (phaseType) {
@@ -13,7 +14,7 @@ export class PhaseActionTypeResolverService {
       case "Dismissal":
         return ActionType.Discipline;
       default:
-        return ActionType.Base
+        return ActionType.Base;
     }
   }
 

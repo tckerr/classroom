@@ -1,7 +1,7 @@
 import {PublicSummary} from "./public-summary";
 
-interface JsonRepresentable{
-  asJson(): any
+interface JsonRepresentable {
+  asJson(): any;
 }
 
 export class GameSummary implements JsonRepresentable {
@@ -13,7 +13,7 @@ export class GameSummary implements JsonRepresentable {
     this.publicData = new PublicSummary(data.public);
   }
 
-  public asJson(){
+  public asJson() {
     return this._data;
   }
 }

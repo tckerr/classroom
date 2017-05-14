@@ -9,7 +9,7 @@ export class AnonymousGuard implements CanActivate {
 
   canActivate() {
     if (this.authService.authenticated) {
-      this.router.navigate(['/lobby']);
+      this.router.navigate(["/lobby"]);
       return false;
     }
     return true;

@@ -1,8 +1,8 @@
 <div>
   <div class="card">
     <div class="card-header">
-        <span>Action Options</span>
-        <app-loading-spinner [inline]="true" [spinnerWidth]="20" *ngIf="loading"></app-loading-spinner>
+      <span>Action Options</span>
+      <app-loading-spinner [inline]="true" [spinnerWidth]="20" *ngIf="loading"></app-loading-spinner>
     </div>
     <div class="card-block">
       <div class="row">
@@ -34,7 +34,8 @@
             <button
               type="submit"
               class="btn btn-success"
-              [disabled]="!selectedCardId || loading">Submit</button>
+              [disabled]="!selectedCardId || loading">Submit
+            </button>
           </form>
           <button
             *ngIf="prompt.hasQuestions"

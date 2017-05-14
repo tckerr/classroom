@@ -11,7 +11,6 @@ import "rxjs/add/observable/of";
 
 import {Observable} from "rxjs/Rx";
 
-
 @Injectable()
 export class LoginService {
 

@@ -2,14 +2,13 @@ import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {GamesService} from "./game/games.service";
 import {ActivitiesService} from "./game/activities.service";
-import {GameCreateModel} from "./game/models/creation-models/game-create-model";
 
 @NgModule({
-  imports: [
+  imports:      [
     CommonModule
   ],
-  providers: [GamesService, ActivitiesService],
-  exports: [GameCreateModel],
+  providers:    [GamesService, ActivitiesService],
+  exports:      [],
   declarations: []
 })
 export class FinalsweekApiModule {

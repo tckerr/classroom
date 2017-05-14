@@ -4,9 +4,9 @@ import {StudentSummary} from "../../../../../../finalsweek-api/game/models/summa
 import {ActorSummary} from "../../../../../../finalsweek-api/game/models/summary/actor-summary";
 
 @Component({
-  selector: "app-seat-grid",
+  selector:    "app-seat-grid",
   templateUrl: "./seat-grid.component.html",
-  styleUrls: ["./seat-grid.component.css"]
+  styleUrls:   ["./seat-grid.component.css"]
 })
 export class SeatGridComponent implements OnInit, OnChanges {
 
@@ -33,11 +33,11 @@ export class SeatGridComponent implements OnInit, OnChanges {
     }
   }
 
-  private isCurrentTurnActor(student){
+  private isCurrentTurnActor(student) {
     return student
       && student.actor
       && this.currentTurnActor
-      && this.currentTurnActor.id == student.actor.id;
+      && this.currentTurnActor.id === student.actor.id;
   }
 
   private initializeGrid() {
@@ -45,10 +45,10 @@ export class SeatGridComponent implements OnInit, OnChanges {
     let maxCol = 0;
     for (let seat of this.seats) {
       if (seat.row > maxRow) {
-        maxRow = seat.row
+        maxRow = seat.row;
       }
       if (seat.column > maxCol) {
-        maxCol = seat.column
+        maxCol = seat.column;
       }
     }
     for (let col = 0; col <= maxCol; ++col) {
@@ -63,8 +63,8 @@ export class SeatGridComponent implements OnInit, OnChanges {
     }
     this.maxRow = maxRow;
     this.maxCol = maxCol;
-    for (let seat of this.seats){
-      this.grid[seat.row][seat.column] = seat.student
+    for (let seat of this.seats) {
+      this.grid[seat.row][seat.column] = seat.student;
     }
   }
 

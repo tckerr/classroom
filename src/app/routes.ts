@@ -9,37 +9,37 @@ import {GameDetailViewComponent} from "./website/views/lobby/game-detail-view/ga
 
 
 export const LoginRoute = {
-  path: 'login',
+  path: "login",
   component: LoginComponent,
-  pathMatch: 'full',
+  pathMatch: "full",
   canActivate: [AnonymousGuard]
 };
 
 export const LobbyRoute = {
-  path: 'lobby',
+  path: "lobby",
   component: LobbyComponent,
   canActivate: [IsAuthenticatedGuard],
   children: [
     {
-      path: '',
-      pathMatch: 'full',
-      redirectTo: 'games',
+      path: "",
+      pathMatch: "full",
+      redirectTo: "games",
     },
     {
-      path: 'games',
+      path: "games",
       children: [
         {
-          path: '',
+          path: "",
           component: GamesListComponent,
         },
         {
-          path: 'new',
-          pathMatch: 'full',
+          path: "new",
+          pathMatch: "full",
           component: NewGameComponent,
         },
         {
-          path: ':gameId/:actorId',
-          pathMatch: 'full',
+          path: ":gameId/:actorId",
+          pathMatch: "full",
           component: GameDetailViewComponent,
         }
       ]
@@ -49,9 +49,9 @@ export const LobbyRoute = {
 };
 
 export const DefaultRoute = {
-  path: '',
+  path: "",
   redirectTo: LobbyRoute.path,
-  pathMatch: 'full'
+  pathMatch: "full"
 };
 
 export const AppRoutes: Routes = [

@@ -5,14 +5,14 @@ import {GameSummary} from "../../../finalsweek-api/game/models/summary/game-summ
 import {GameSummaryAccessor} from "app/finalsweek-api/game/models/summary/accessors/game-summary-accessor";
 import {PhaseActionTypeResolverService} from "../../../finalsweek-api/game/helpers/phase-action-type-resolver.service";
 import {ActionType} from "../../../finalsweek-api/game/definitions";
-import {GameSummaryUpdateNotifierService} from "../../comm-services/game-summary-update-notifier.service";
+import {GameSummaryUpdateNotifierService} from "../../comm-services/game-summary-update-notification.service";
 
 // TODO: move to views
 @Component({
-  selector: "app-game-actions",
+  selector:    "app-game-actions",
   templateUrl: "./game-actions.component.html",
-  styleUrls: ["./game-actions.component.css"],
-  providers: [
+  styleUrls:   ["./game-actions.component.css"],
+  providers:   [
     PhaseActionTypeResolverService,
     GameSummaryUpdateNotifierService,
     ActivitiesService,
@@ -21,7 +21,7 @@ import {GameSummaryUpdateNotifierService} from "../../comm-services/game-summary
 export class GameActionsComponent implements OnInit {
   @Input() public gameId: string;
   @Input() public actorId: string;
-  private loading: boolean = true;
+  private loading = true;
   private actionType: ActionType;
   private ActionType = ActionType;
   private gameSummary: GameSummary;
@@ -37,7 +37,7 @@ export class GameActionsComponent implements OnInit {
       .details(this.gameId, this.actorId, false)
       .subscribe(gameSummary => this.refreshFromGameDetail(gameSummary));
 
-    this.gameSummaryUpdateNotifierService.gameSummaryUpdated$.subscribe(gameSummary => this.refreshFromGameDetail(gameSummary))
+    this.gameSummaryUpdateNotifierService.gameSummaryUpdated$.subscribe(gameSummary => this.refreshFromGameDetail(gameSummary));
   }
 
   private refreshFromGameDetail(gameSummary: GameSummary) {

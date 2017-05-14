@@ -3,10 +3,10 @@ import {LoginService} from "../../../finalsweek-api/auth/login/login.service";
 import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
-  providers: [LoginService]
+  selector:    "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls:   ["./login.component.css"],
+  providers:   [LoginService]
 })
 export class LoginComponent implements OnInit {
 

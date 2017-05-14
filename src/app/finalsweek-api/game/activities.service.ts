@@ -14,8 +14,8 @@ export class ActivitiesService {
   public takeAction(gameId: string, actorId: string, action: any) {
     return this.http
       .post(this.takeActionUrl, {
-        actor_id: actorId,
-        game_id: gameId,
+        actor_id:      actorId,
+        game_id:       gameId,
         action_params: action
       })
       .map(r => new GameSummary(r.json()));

@@ -9,17 +9,17 @@ import {IsAuthenticatedGuard} from "./guards/is-authenticated.guard";
 import {RegistrationService} from "./registration/registration.service";
 
 @NgModule({
-  imports: [
+  imports:      [
     CommonModule
   ],
-  providers: [
+  providers:    [
     LoginService,
     LogoutService,
     RegistrationService,
     AuthService,
     AuthListenerService,
     AnonymousGuard,
-    IsAuthenticatedGuard,
+    IsAuthenticatedGuard
   ],
   declarations: []
 })

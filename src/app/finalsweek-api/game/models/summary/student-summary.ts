@@ -5,10 +5,11 @@ export class StudentSummary {
   public studentInfoId: string;
   public actor: ActorSummary;
 
-  constructor(data: any){
+  constructor(data: any) {
     this.name = data.name;
     this.studentInfoId = data.studentInfoId;
-    if(data.actor)
+    if (data.actor) {
       this.actor = new ActorSummary(data.actor);
+    }
   }
 }

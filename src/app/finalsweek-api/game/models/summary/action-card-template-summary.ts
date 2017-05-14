@@ -5,7 +5,7 @@ export class ActionCardTemplateSummary {
   public cardType: string;
   public troubleCost: number;
 
-  constructor(data:any){
+  constructor(data: any) {
     this.id = data.id;
     this.name = data.name;
     this.description = data.description;

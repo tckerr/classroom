@@ -21,7 +21,7 @@ export class PublicSummary {
     this.phaseType = data.phase_type;
   }
 
-  public asJson(){
+  public asJson() {
     return this._data;
   }
 }

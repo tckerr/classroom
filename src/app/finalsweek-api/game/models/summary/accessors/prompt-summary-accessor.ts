@@ -4,8 +4,8 @@ export class PromptSummaryAccessor {
 
   public getOpenQuestions(prompt: PromptSummary, exclusions: {} = {}) {
     let result = {};
-    for (let key in prompt.open){
-      if (!exclusions[key]){
+    for (let key in prompt.open) {
+      if (!exclusions[key]) {
         result[key] = prompt.open[key];
       }
     }

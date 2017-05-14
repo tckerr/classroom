@@ -3,7 +3,7 @@ import {environment} from "../../../../environments/environment";
 import {Http} from "@angular/http";
 import {RegistrationModel} from "../models/registration-model";
 import {RegistrationResult} from "../models/registration-result";
-import {Observable, ObservableInput} from "rxjs/Observable";
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class RegistrationService {

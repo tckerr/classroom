@@ -12,7 +12,7 @@
             *ngFor="let option of question.options"
             [value]="option.id"
             [selected]="amSelected(question, option.id)">
-            <span>{{option.display}} ({{option.id}})</span>
+            {{option.display}} ({{option.id}})
           </option>
         </select>
       </div>

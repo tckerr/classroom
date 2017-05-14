@@ -1,10 +1,10 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {CardIdSelectionService} from "../../../comm-services/card-id-selection.service";
+import {CardIdSelectionService} from "../../../comm-services/card-id-selection-notification.service";
 
 @Component({
-  selector: "app-card-selector",
+  selector:    "app-card-selector",
   templateUrl: "./card-selector.component.html",
-  styleUrls: ["./card-selector.component.css"]
+  styleUrls:   ["./card-selector.component.css"]
 })
 export class CardSelectorComponent implements OnInit {
   @Input() private cards: any[] = [];
@@ -12,16 +12,17 @@ export class CardSelectorComponent implements OnInit {
   @Input() private disabled: boolean;
   private selectedCard: any;
 
-  constructor(private actorIdSelectionService: CardIdSelectionService) { }
+  constructor(private actorIdSelectionService: CardIdSelectionService) {
+  }
 
-  public onSelect(selectedCard){
+  public onSelect(selectedCard) {
     this.selectedCard = selectedCard;
     this.actorIdSelectionService.broadcastSelection(selectedCard.id);
   }
 
   ngOnInit() {
-    for(let card of this.cards){
-      if (card.id == this.selectedCardId){
+    for (let card of this.cards) {
+      if (card.id === this.selectedCardId) {
         this.selectedCard = card;
       }
     }

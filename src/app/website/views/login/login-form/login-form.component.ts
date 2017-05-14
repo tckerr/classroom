@@ -1,13 +1,13 @@
 import {Component, Input, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
-import {Credentials} from "../../../finalsweek-api/auth/models/credentials";
-import {AuthService} from "../../../finalsweek-api/auth/auth.service";
-import {LoginResult} from "../../../finalsweek-api/auth/models/login-result";
+import {Credentials} from "../../../../finalsweek-api/auth/models/credentials";
+import {AuthService} from "../../../../finalsweek-api/auth/auth.service";
+import {LoginResult} from "../../../../finalsweek-api/auth/models/login-result";
 
 @Component({
-  selector: "app-login-form",
+  selector:    "app-login-form",
   templateUrl: "./login-form.component.html",
-  styleUrls: ["./login-form.component.css"]
+  styleUrls:   ["./login-form.component.css"]
 })
 export class LoginFormComponent implements OnInit {
   private model: Credentials;
