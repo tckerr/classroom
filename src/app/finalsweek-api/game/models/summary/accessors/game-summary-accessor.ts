@@ -1,5 +1,6 @@
 import {GameSummary} from "../game-summary";
 import {ActorSummary} from "../actor-summary";
+import {SeatSummary} from "../seat-summary";
 export class GameSummaryAccessor {
   constructor(public gameSummary: GameSummary){
 
@@ -26,5 +27,9 @@ export class GameSummaryAccessor {
 
   public get actors(): ActorSummary[]{
     return this.gameSummary.publicData.actors;
+  }
+
+  public get seats(): SeatSummary[]{
+    return this.gameSummary.publicData.seats;
   }
 }

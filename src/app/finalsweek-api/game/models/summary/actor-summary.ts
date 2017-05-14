@@ -9,8 +9,8 @@ export class ActorSummary {
   public label: string;
   public name: string;
   public inPlayEffects: InPlayEffectSummary;
-  private stats: StatsSummary;
-  private seat: SeatSummary;
+  public stats: StatsSummary;
+  public seat: SeatSummary;
 
   constructor(private data: any) {
     this.id = data.id;

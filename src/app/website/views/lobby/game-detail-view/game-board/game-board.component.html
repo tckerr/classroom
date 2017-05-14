@@ -21,6 +21,9 @@
       <div class="col-5">
         <app-actor-list [actors]="accessor.actors" [currentTurnActor]="accessor.currentTurnActor"></app-actor-list>
       </div>
+      <div class="col-7">
+          <app-seat-grid [seats]="accessor.seats" [currentTurnActor]="accessor.currentTurnActor"></app-seat-grid>
+        </div>
     </div>
 
   </div>

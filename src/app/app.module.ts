@@ -30,6 +30,7 @@ import { PromptSelectorComponent } from './website/data-components/selectors/pro
 import { DisciplineActionComponent } from './website/data-components/game-actions/phase-type-actions/discipline-action/discipline-action.component';
 import { GameBoardComponent } from './website/views/lobby/game-detail-view/game-board/game-board.component';
 import { ActorListComponent } from './website/views/lobby/game-detail-view/game-board/actor-list/actor-list.component';
+import { SeatGridComponent } from './website/views/lobby/game-detail-view/game-board/seat-grid/seat-grid.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { ActorListComponent } from './website/views/lobby/game-detail-view/game-
     PromptSelectorComponent,
     DisciplineActionComponent,
     GameBoardComponent,
-    ActorListComponent
+    ActorListComponent,
+    SeatGridComponent
   ],
   imports: [
     BrowserModule,

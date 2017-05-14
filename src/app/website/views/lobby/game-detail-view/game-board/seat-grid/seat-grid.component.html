@@ -1,0 +1,48 @@
+<div class="container-fluid">
+  <div class="row" *ngFor="let row of grid">
+    <div class="col card"
+         *ngFor="let student of row"
+         [ngClass]="{'card-inverse card-primary': isCurrentTurnActor(student)}">
+      <div
+        class="card-outline-info text-center"
+        *ngIf="student && student.actor">
+        <div class="card-block p-1">
+          <div>
+            <small class="text-info"><strong>{{student.name}}</strong></small>
+          </div>
+          <div>
+            <small class="text-info">{{student.actor.name}}</small>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="card-outline-info text-center"
+        *ngIf="student && !student.actor">
+        <div class="card-block p-1">
+          <div>
+            <small class="text-muted">{{student.name}}</small>
+          </div>
+          <div>
+            <small class="text-muted">&nbsp;</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="card-outline-info text-center"
+      *ngIf="!student">
+      <div class="card-block p-1">
+          <div>
+            <small class="text-muted">&nbsp;</small>
+          </div>
+          <div>
+            <small class="text-muted">&nbsp;</small>
+          </div>
+        </div>
+    </div>
+
+  </div>
+
+</div>
