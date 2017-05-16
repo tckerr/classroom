@@ -14,27 +14,27 @@ import {Observable} from "rxjs/Rx";
 @Injectable()
 export class LoginService {
 
-  private loginUrl: string;
+   private loginUrl: string;
 
-  constructor(private http: Http) {
-    this.loginUrl = environment.finalsweekApi.endpoints.auth.login;
-  }
+   constructor(private http: Http) {
+      this.loginUrl = environment.finalsweekApi.endpoints.auth.login;
+   }
 
-  public login(model: Credentials): Observable<LoginResult> {
-    return this.http
-      .post(this.loginUrl, model)
-      .map(r => this.responseToLoginSuccess(r))
-      .catch(e => Observable.from([this.responseToLoginError(e)]));
-  }
+   public login(model: Credentials): Observable<LoginResult> {
+      return this.http
+         .post(this.loginUrl, model)
+         .map(r => this.responseToLoginSuccess(r))
+         .catch(e => Observable.from([this.responseToLoginError(e)]));
+   }
 
-  private responseToLoginError(e) {
-    let adaptedResult = new LoginResult(false, null, e._body);
-    console.log("Login exception:", e, "returning", adaptedResult);
-    return adaptedResult;
-  }
+   private responseToLoginError(e) {
+      let adaptedResult = new LoginResult(false, null, e._body);
+      console.log("Login exception:", e, "returning", adaptedResult);
+      return adaptedResult;
+   }
 
-  private responseToLoginSuccess(response) {
-    const token = response.json().key;
-    return new LoginResult(response.ok, token);
-  }
+   private responseToLoginSuccess(response) {
+      const token = response.json().key;
+      return new LoginResult(response.ok, token);
+   }
 }

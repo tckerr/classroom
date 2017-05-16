@@ -5,12 +5,12 @@ import {PromptSelection} from "./models/prompt";
 @Injectable()
 export class PromptSelectionNotificationService {
 
-  private notifierSource = new Subject<PromptSelection>();
+   private notifierSource = new Subject<PromptSelection>();
 
-  public promptSelected$ = this.notifierSource.asObservable();
+   public promptSelected$ = this.notifierSource.asObservable();
 
-  public broadcastPromptSelection(selection: PromptSelection) {
-    this.notifierSource.next(selection);
-  }
+   public broadcastPromptSelection(selection: PromptSelection) {
+      this.notifierSource.next(selection);
+   }
 
 }

@@ -3,23 +3,23 @@ import {LoginService} from "../../../finalsweek-api/auth/login/login.service";
 import {Router} from "@angular/router";
 
 @Component({
-  selector:    "app-login",
-  templateUrl: "./login.component.html",
-  styleUrls:   ["./login.component.css"],
-  providers:   [LoginService]
+   selector:    "app-login",
+   templateUrl: "./login.component.html",
+   styleUrls:   ["./login.component.css"],
+   providers:   [LoginService]
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router) {
-  }
+   constructor(private router: Router) {
+   }
 
-  private onSubmit(result) {
-    if (result.success) {
-      this.router.navigate(["lobby"]);
-    }
-  }
+   private onSubmit(result) {
+      if (result.success) {
+         this.router.navigate(["lobby"]);
+      }
+   }
 
-  ngOnInit() {
-  }
+   ngOnInit() {
+   }
 
 }

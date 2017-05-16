@@ -1,5 +1,5 @@
 export enum ActionType {
-  Base,
-  ActionCard,
-  Discipline
+   Base,
+   ActionCard,
+   Discipline
 }

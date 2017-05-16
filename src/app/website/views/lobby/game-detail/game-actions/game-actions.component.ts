@@ -9,42 +9,42 @@ import {GameSummaryUpdateNotifierService} from "../../../../comm-services/game-s
 
 // TODO: move to views
 @Component({
-  selector:    "app-game-actions",
-  templateUrl: "./game-actions.component.html",
-  styleUrls:   ["./game-actions.component.css"],
-  providers:   [
-    PhaseActionTypeResolverService,
-    GameSummaryUpdateNotifierService,
-    ActivitiesService,
-    GamesService]
+   selector:    "app-game-actions",
+   templateUrl: "./game-actions.component.html",
+   styleUrls:   ["./game-actions.component.css"],
+   providers:   [
+      PhaseActionTypeResolverService,
+      GameSummaryUpdateNotifierService,
+      ActivitiesService,
+      GamesService]
 })
 export class GameActionsComponent implements OnInit {
-  @Input() public gameId: string;
-  @Input() public actorId: string;
-  private loading = true;
-  private actionType: ActionType;
-  private ActionType = ActionType;
-  private gameSummary: GameSummary;
-  private accessor: GameSummaryAccessor;
+   @Input() public gameId: string;
+   @Input() public actorId: string;
+   private loading = true;
+   private actionType: ActionType;
+   private ActionType = ActionType;
+   private gameSummary: GameSummary;
+   private accessor: GameSummaryAccessor;
 
-  constructor(private gamesService: GamesService,
-              private gameSummaryUpdateNotifierService: GameSummaryUpdateNotifierService,
-              private phaseActionTypeResolver: PhaseActionTypeResolverService) {
-  }
+   constructor(private gamesService: GamesService,
+               private gameSummaryUpdateNotifierService: GameSummaryUpdateNotifierService,
+               private phaseActionTypeResolver: PhaseActionTypeResolverService) {
+   }
 
-  ngOnInit() {
-    this.gamesService
-      .details(this.gameId, this.actorId, false)
-      .subscribe(gameSummary => this.refreshFromGameDetail(gameSummary));
+   ngOnInit() {
+      this.gamesService
+         .details(this.gameId, this.actorId, false)
+         .subscribe(gameSummary => this.refreshFromGameDetail(gameSummary));
 
-    this.gameSummaryUpdateNotifierService.gameSummaryUpdated$.subscribe(gameSummary => this.refreshFromGameDetail(gameSummary));
-  }
+      this.gameSummaryUpdateNotifierService.gameSummaryUpdated$.subscribe(gameSummary => this.refreshFromGameDetail(gameSummary));
+   }
 
-  private refreshFromGameDetail(gameSummary: GameSummary) {
-    this.gameSummary = gameSummary;
-    this.accessor = new GameSummaryAccessor(this.gameSummary);
-    this.actionType = this.phaseActionTypeResolver.resolve(this.accessor.phaseType);
-    this.loading = false;
-  }
+   private refreshFromGameDetail(gameSummary: GameSummary) {
+      this.gameSummary = gameSummary;
+      this.accessor = new GameSummaryAccessor(this.gameSummary);
+      this.actionType = this.phaseActionTypeResolver.resolve(this.accessor.phaseType);
+      this.loading = false;
+   }
 
 }

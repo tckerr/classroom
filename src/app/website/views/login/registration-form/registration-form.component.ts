@@ -3,24 +3,24 @@ import {RegistrationModel} from "../../../../finalsweek-api/auth/models/registra
 import {RegistrationService} from "../../../../finalsweek-api/auth/registration/registration.service";
 
 @Component({
-  selector:    "app-registration-form",
-  templateUrl: "./registration-form.component.html",
-  styleUrls:   ["./registration-form.component.css"]
+   selector:    "app-registration-form",
+   templateUrl: "./registration-form.component.html",
+   styleUrls:   ["./registration-form.component.css"]
 })
 export class RegistrationFormComponent implements OnInit {
 
-  private model: RegistrationModel;
+   private model: RegistrationModel;
 
-  constructor(private registrationService: RegistrationService) {
-    this.model = new RegistrationModel("", "", "", "");
-  }
+   constructor(private registrationService: RegistrationService) {
+      this.model = new RegistrationModel("", "", "", "");
+   }
 
-  public register() {
-    let registrationStream = this.registrationService.register(this.model);
-    registrationStream.subscribe(r => console.log(r));
-  }
+   public register() {
+      let registrationStream = this.registrationService.register(this.model);
+      registrationStream.subscribe(r => console.log(r));
+   }
 
-  ngOnInit() {
-  }
+   ngOnInit() {
+   }
 
 }

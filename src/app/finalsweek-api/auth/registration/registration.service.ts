@@ -7,27 +7,27 @@ import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class RegistrationService {
-  private registrationUrl: string;
+   private registrationUrl: string;
 
-  constructor(private http: Http) {
-    this.registrationUrl = environment.finalsweekApi.endpoints.auth.registration;
-  }
+   constructor(private http: Http) {
+      this.registrationUrl = environment.finalsweekApi.endpoints.auth.registration;
+   }
 
-  public register(model: RegistrationModel): Observable<RegistrationResult> {
-    return this.http
-      .post(this.registrationUrl, model)
-      .map(r => this.responseToRegistrationSuccess(r))
-      .catch(e => Observable.from([this.responseToRegistrationError(e)]));
-  }
+   public register(model: RegistrationModel): Observable<RegistrationResult> {
+      return this.http
+         .post(this.registrationUrl, model)
+         .map(r => this.responseToRegistrationSuccess(r))
+         .catch(e => Observable.from([this.responseToRegistrationError(e)]));
+   }
 
-  private responseToRegistrationError(exception) {
-    console.log(exception);
-    return new RegistrationResult(false, exception.json());
-  }
+   private responseToRegistrationError(exception) {
+      console.log(exception);
+      return new RegistrationResult(false, exception.json());
+   }
 
-  private responseToRegistrationSuccess(response) {
-    console.log(response);
-    return new RegistrationResult(true);
-  }
+   private responseToRegistrationSuccess(response) {
+      console.log(response);
+      return new RegistrationResult(true);
+   }
 
 }

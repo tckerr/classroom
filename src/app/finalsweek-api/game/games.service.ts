@@ -8,37 +8,37 @@ import {Observable} from "rxjs/Rx";
 
 @Injectable()
 export class GamesService {
-  private summaryListUrl: string;
-  private createUrl: string;
-  private detailUrlTemplate: { summaryList; detail } | any;
+   private summaryListUrl: string;
+   private createUrl: string;
+   private detailUrlTemplate: { summaryList; detail } | any;
 
-  constructor(private http: Http) {
-    this.summaryListUrl = environment.finalsweekApi.endpoints.game.root;
-    this.createUrl = environment.finalsweekApi.endpoints.game.root;
-    this.detailUrlTemplate = environment.finalsweekApi.endpoints.game.detail;
-  }
+   constructor(private http: Http) {
+      this.summaryListUrl = environment.finalsweekApi.endpoints.game.root;
+      this.createUrl = environment.finalsweekApi.endpoints.game.root;
+      this.detailUrlTemplate = environment.finalsweekApi.endpoints.game.detail;
+   }
 
-  public summaryList(): Observable<GameOverviewSummary[]> {
-    let requestToGameSummary = r => r.json().map(summary => new GameOverviewSummary(summary));
-    return this.http
-      .get(this.summaryListUrl)
-      .do(r => console.log(r))
-      .map(requestToGameSummary);
-  }
+   public summaryList(): Observable<GameOverviewSummary[]> {
+      let requestToGameSummary = r => r.json().map(summary => new GameOverviewSummary(summary));
+      return this.http
+         .get(this.summaryListUrl)
+         .do(r => console.log(r))
+         .map(requestToGameSummary);
+   }
 
-  public details(gameId: string, actorId: string, fresh: boolean = false): Observable<GameSummary> {
-    return this.http
-      .get(this.detailUrlTemplate(gameId, actorId, fresh))
-      .map(r => new GameSummary(r.json()));
-  }
+   public details(gameId: string, actorId: string, fresh: boolean = false): Observable<GameSummary> {
+      return this.http
+         .get(this.detailUrlTemplate(gameId, actorId, fresh))
+         .map(r => new GameSummary(r.json()));
+   }
 
-  public create(model: GameCreateModel): Observable<GameSummary> {
-    let postData = {
-      player_count: model.playerCount,
-      seed: model.seed
-    };
-    return this.http
-      .post(this.createUrl, postData)
-      .map(r => new GameSummary(r.json()));
-  }
+   public create(model: GameCreateModel): Observable<GameSummary> {
+      let postData = {
+         player_count: model.playerCount,
+         seed:         model.seed
+      };
+      return this.http
+         .post(this.createUrl, postData)
+         .map(r => new GameSummary(r.json()));
+   }
 }

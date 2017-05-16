@@ -1,57 +1,57 @@
 <div class="container-fluid">
-  <div class="row" *ngFor="let row of grid">
-    <div class="col card"
-         *ngFor="let student of row"
-         [ngClass]="{'card-inverse card-primary': isCurrentTurnActor(student)}">
-      <div
-        class="card-outline-info text-center"
-        style="cursor: pointer"
-        *ngIf="student && student.actor">
-        <ng-template #statsPopover>
-          <div class="text-primary" style="max-height: 300px; overflow: auto">
-            <t-json-viewer [json]="student.actor.stats"></t-json-viewer>
-            <t-json-viewer [json]="student.actor"></t-json-viewer>
-          </div>
-        </ng-template>
-        <div
-          class="card-block p-1"
-          [ngbPopover]="statsPopover">
-          <div>
-            <small class="text-info"><strong>{{student.actor.name}}</strong></small>
-          </div>
-          <div>
-            <small class="text-info">{{student.name}}</small>
-          </div>
-        </div>
+   <div class="row" *ngFor="let row of grid">
+      <div class="col card"
+           *ngFor="let student of row"
+           [ngClass]="{'card-inverse card-primary': isCurrentTurnActor(student)}">
+         <div
+            class="card-outline-info text-center"
+            style="cursor: pointer"
+            *ngIf="student && student.actor">
+            <ng-template #statsPopover>
+               <div class="text-primary" style="max-height: 300px; overflow: auto">
+                  <t-json-viewer [json]="student.actor.stats"></t-json-viewer>
+                  <t-json-viewer [json]="student.actor"></t-json-viewer>
+               </div>
+            </ng-template>
+            <div
+               class="card-block p-1"
+               [ngbPopover]="statsPopover">
+               <div>
+                  <small class="text-info"><strong>{{student.actor.name}}</strong></small>
+               </div>
+               <div>
+                  <small class="text-info">{{student.name}}</small>
+               </div>
+            </div>
+         </div>
+
+         <div
+            class="card-outline-info text-center"
+            *ngIf="student && !student.actor">
+            <div class="card-block p-1">
+               <div>
+                  <small class="text-muted">{{student.name}}</small>
+               </div>
+               <div>
+                  <small class="text-muted">&nbsp;</small>
+               </div>
+            </div>
+         </div>
       </div>
 
       <div
-        class="card-outline-info text-center"
-        *ngIf="student && !student.actor">
-        <div class="card-block p-1">
-          <div>
-            <small class="text-muted">{{student.name}}</small>
-          </div>
-          <div>
-            <small class="text-muted">&nbsp;</small>
-          </div>
-        </div>
+         class="card-outline-info text-center"
+         *ngIf="!student">
+         <div class="card-block p-1">
+            <div>
+               <small class="text-muted">&nbsp;</small>
+            </div>
+            <div>
+               <small class="text-muted">&nbsp;</small>
+            </div>
+         </div>
       </div>
-    </div>
 
-    <div
-      class="card-outline-info text-center"
-      *ngIf="!student">
-      <div class="card-block p-1">
-        <div>
-          <small class="text-muted">&nbsp;</small>
-        </div>
-        <div>
-          <small class="text-muted">&nbsp;</small>
-        </div>
-      </div>
-    </div>
-
-  </div>
+   </div>
 
 </div>

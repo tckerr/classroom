@@ -5,11 +5,11 @@ import {GameSummary} from "../../finalsweek-api/game/models/summary/game-summary
 @Injectable()
 export class GameCreationNotificationService {
 
-  private notifierSource = new Subject<GameSummary>();
+   private notifierSource = new Subject<GameSummary>();
 
-  public gameCreated$ = this.notifierSource.asObservable();
+   public gameCreated$ = this.notifierSource.asObservable();
 
-  public broadcastGameCreation(id: GameSummary) {
-    this.notifierSource.next(id);
-  }
+   public broadcastGameCreation(id: GameSummary) {
+      this.notifierSource.next(id);
+   }
 }

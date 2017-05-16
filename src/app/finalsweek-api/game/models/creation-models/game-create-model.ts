@@ -1,4 +1,4 @@
 export class GameCreateModel {
-  constructor(public playerCount: number, public seed: string) {
-  }
+   constructor(public playerCount: number, public seed: string) {
+   }
 }

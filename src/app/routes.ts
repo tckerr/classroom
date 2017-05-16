@@ -8,58 +8,58 @@ import {NewGameComponent} from "./website/views/lobby/new-game/new-game.componen
 import {GameDetailComponent} from "./website/views/lobby/game-detail/game-detail.component";
 
 export const LoginRoute = {
-  path:        "login",
-  component:   LoginComponent,
-  pathMatch:   "full",
-  canActivate: [AnonymousGuard]
+   path:        "login",
+   component:   LoginComponent,
+   pathMatch:   "full",
+   canActivate: [AnonymousGuard]
 };
 
 export const LobbyRoute = {
-  path:        "lobby",
-  component:   LobbyComponent,
-  canActivate: [IsAuthenticatedGuard],
-  children:    [
-    {
-      path:       "",
-      pathMatch:  "full",
-      redirectTo: "games"
-    },
-    {
-      path:     "games",
-      children: [
-        {
-          path:       "",
-          pathMatch:  "full",
-          redirectTo: "list"
-        },
-        {
-          path:      "list",
-          component: GamesListComponent
-        },
-        {
-          path:      "new",
-          pathMatch: "full",
-          component: NewGameComponent
-        },
-        {
-          path:      ":gameId/:actorId",
-          pathMatch: "full",
-          component: GameDetailComponent
-        }
-      ]
-    }
+   path:        "lobby",
+   component:   LobbyComponent,
+   canActivate: [IsAuthenticatedGuard],
+   children:    [
+      {
+         path:       "",
+         pathMatch:  "full",
+         redirectTo: "games"
+      },
+      {
+         path:     "games",
+         children: [
+            {
+               path:       "",
+               pathMatch:  "full",
+               redirectTo: "list"
+            },
+            {
+               path:      "list",
+               component: GamesListComponent
+            },
+            {
+               path:      "new",
+               pathMatch: "full",
+               component: NewGameComponent
+            },
+            {
+               path:      ":gameId/:actorId",
+               pathMatch: "full",
+               component: GameDetailComponent
+            }
+         ]
+      }
 
-  ]
+   ]
 };
 
 export const DefaultRoute = {
-  path:       "",
-  redirectTo: LobbyRoute.path,
-  pathMatch:  "full"
+   path:       "",
+   redirectTo: LobbyRoute.path,
+   pathMatch:  "full"
 };
 
 export const AppRoutes: Routes = [
-  DefaultRoute,
-  LoginRoute,
-  LobbyRoute
+   DefaultRoute,
+   LoginRoute,
+   LobbyRoute
 ];

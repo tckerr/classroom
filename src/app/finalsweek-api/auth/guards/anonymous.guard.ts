@@ -4,14 +4,14 @@ import {AuthService} from "../auth.service";
 
 @Injectable()
 export class AnonymousGuard implements CanActivate {
-  constructor(private authService: AuthService, private router: Router) {
-  }
+   constructor(private authService: AuthService, private router: Router) {
+   }
 
-  canActivate() {
-    if (this.authService.authenticated) {
-      this.router.navigate(["/lobby"]);
-      return false;
-    }
-    return true;
-  }
+   canActivate() {
+      if (this.authService.authenticated) {
+         this.router.navigate(["/lobby"]);
+         return false;
+      }
+      return true;
+   }
 }

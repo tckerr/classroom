@@ -1,4 +1,4 @@
 export interface ActionSubmitter {
-  onSubmit();
-  buildAction();
+   onSubmit();
+   buildAction();
 }
