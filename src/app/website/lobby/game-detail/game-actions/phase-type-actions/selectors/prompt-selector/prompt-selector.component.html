@@ -1,0 +1,21 @@
+<div>
+   <div *ngFor="let question of questions">
+      <div class="form-group row">
+         <label class="col-3 col-form-label small text-right" for="{{question.key}}">{{question.key}}</label>
+         <div class="col-8">
+            <select
+               id="{{question.key}}"
+               (change)="onSelect(question, $event.target.value)"
+               class="form-control"
+               [disabled]="question.disabled || disabled">
+               <option
+                  *ngFor="let option of question.options"
+                  [value]="option.id"
+                  [selected]="amSelected(question, option.id)">
+                  {{option.display}} ({{option.id}})
+               </option>
+            </select>
+         </div>
+      </div>
+   </div>
+</div>

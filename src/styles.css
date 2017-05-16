@@ -10,3 +10,7 @@ button {
 .bg-light {
    background-color: #eee;
 }
+
+.text-medium {
+   font-size: .9rem;
+}

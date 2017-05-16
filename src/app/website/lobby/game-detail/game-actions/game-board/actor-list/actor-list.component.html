@@ -1,0 +1,42 @@
+<ul class="list-group">
+   <li
+      *ngFor="let actor of actors; let index = index;"
+      class="list-group-item justify-content-between"
+      [ngClass]="{'active': currentTurnActor && currentTurnActor.id == actor.id}">
+      <div class="col-3 pl-2">
+         <div class="row text-medium"><span>{{actor.name}}</span></div>
+         <div class="row"><span class="small text-info">{{actor.id}}</span></div>
+      </div>
+      <div class="col-1 p-0">
+         <div class="row"><span class="m-auto badge badge-success badge-pill">{{actor.stats.grades}}</span></div>
+         <div class="row">
+            <small class="m-auto">Grades</small>
+         </div>
+      </div>
+      <div class="col-1 p-0">
+         <div class="row"><span class="m-auto badge badge-success badge-pill">{{actor.stats.popularity}}</span></div>
+         <div class="row">
+            <small class="m-auto">Popularity</small>
+         </div>
+      </div>
+      <div class="col-1 p-0">
+         <div class="row"><span class="m-auto badge badge-warning badge-pill">{{actor.stats.trouble}}</span></div>
+         <div class="row">
+            <small class="m-auto">Trouble</small>
+         </div>
+      </div>
+      <div class="col-1 p-0">
+         <div class="row"><span class="m-auto badge badge-danger badge-pill">{{actor.stats.torment}}</span></div>
+         <div class="row">
+            <small class="m-auto">Torment</small>
+         </div>
+      </div>
+      <div class="col-1 p-0">
+         <div class="row"><span
+            class="m-auto badge badge-default badge-pill">{{actor.seat.column}}, {{actor.seat.row}}</span></div>
+         <div class="row">
+            <small class="m-auto">Seat</small>
+         </div>
+      </div>
+   </li>
+</ul>

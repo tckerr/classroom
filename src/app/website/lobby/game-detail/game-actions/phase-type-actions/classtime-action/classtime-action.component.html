@@ -1,0 +1,48 @@
+<div class="card">
+   <div class="card-header">
+      <span>Class Time Phase Actions</span>
+      <app-loading-spinner [inline]="true" [spinnerWidth]="20" *ngIf="loading"></app-loading-spinner>
+   </div>
+   <div class="card-block">
+      <div class="row">
+         <div
+            [ngClass]="{
+        'col-2': collapsedCardSection,
+        'col-12': !collapsedCardSection
+      }">
+            <h6 class="card-subtitle mb-3 text-muted">
+               <span>Choose an action card.</span>
+            </h6>
+            <app-card-selector
+               [cards]="accessor.currentTurnActor.hand.actionCards"
+               [selectedCardId]="selectedCardId"
+               [disabled]="collapsedCardSection">
+            </app-card-selector>
+         </div>
+         <div class="col-9" *ngIf="prompt.hasQuestions">
+            <h6 class="card-subtitle mb-3 text-muted">Resolve the following prompts:</h6>
+            <app-prompt-selector
+               [prompt]="prompt"
+               [disabled]="loading">
+            </app-prompt-selector>
+         </div>
+      </div>
+
+      <div class="row mt-2">
+         <div class="col-12">
+            <form #submitActivityForm="ngForm" class="d-inline" (ngSubmit)="onSubmit()">
+               <button
+                  type="submit"
+                  class="btn btn-success"
+                  [disabled]="!selectedCardId || loading">Submit
+               </button>
+            </form>
+            <button
+               *ngIf="prompt.hasQuestions"
+               class="btn btn-info"
+               (click)="refresh()">Start over
+            </button>
+         </div>
+      </div>
+   </div>
+</div>
