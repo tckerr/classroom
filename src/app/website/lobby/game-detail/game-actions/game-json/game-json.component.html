@@ -3,7 +3,10 @@
       <span>JSON</span>
    </div>
    <div class="card-block">
-      <div>
+      <div *ngIf="!loading">
+         <t-json-viewer [json]="gameSummary.asJson()"></t-json-viewer>
+      </div>
+      <div *ngIf="loading">
          <t-json-viewer [json]="gameSummary.asJson()"></t-json-viewer>
       </div>
    </div>
