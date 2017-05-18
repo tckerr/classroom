@@ -22,7 +22,6 @@ export class BaseActionComponent implements OnInit, OnChanges, ActionSubmitter {
    }
 
    ngOnInit() {
-      console.log("CREATED");
       this.setGameSummary(this.gameSummary);
       this.loading = false;
    }
@@ -41,7 +40,6 @@ export class BaseActionComponent implements OnInit, OnChanges, ActionSubmitter {
 
    onSubmit() {
       let action = this.buildAction();
-      console.log("Submitting action:", this.accessor.gameId, this.accessor.currentTurnActor.id, action);
       this.loading = true;
       this.activitiesService
          .takeAction(this.accessor.gameId, this.accessor.currentTurnActor.id, action)
