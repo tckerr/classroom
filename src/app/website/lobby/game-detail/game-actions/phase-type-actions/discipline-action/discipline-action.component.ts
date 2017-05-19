@@ -1,37 +1,18 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
-import {PromptSelectionNotificationService} from "../../../../../comm-services/prompt-selection-notification.service";
+import {Component, Input, OnChanges, SimpleChanges} from "@angular/core";
 import {GameSummary} from "../../../../../../finalsweek-api/game/models/summary/game-summary";
-import {GameSummaryUpdateNotifierService} from "../../../../../comm-services/game-summary-update-notification.service";
-import {ActivitiesService} from "../../../../../../finalsweek-api/game/activities.service";
 import {PromptSummaryAccessor} from "../../../../../../finalsweek-api/game/models/summary/accessors/prompt-summary-accessor";
 import {BaseActionComponent} from "../base-action/base-action.component";
 import {PromptSelection} from "../../../../../comm-services/models/prompt";
-import {GamesService} from "../../../../../../finalsweek-api/game/games.service";
 
 @Component({
    selector:    "app-discipline-action",
    templateUrl: "./discipline-action.component.html",
-   styleUrls:   ["./discipline-action.component.css"],
-   providers:   [PromptSelectionNotificationService]
+   styleUrls:   ["./discipline-action.component.css"]
 })
-export class DisciplineActionComponent extends BaseActionComponent implements OnInit, OnChanges {
+export class DisciplineActionComponent extends BaseActionComponent implements OnChanges {
    @Input() gameSummary: GameSummary;
-   private promptSummaryAccessor: PromptSummaryAccessor;
+   private promptSummaryAccessor = new PromptSummaryAccessor();
    private recentlyClosed: {};
-
-   constructor(private promptSelectionNotificationService: PromptSelectionNotificationService,
-               actionSubmissionNotifierService: GameSummaryUpdateNotifierService,
-               activitiesService: ActivitiesService,
-               gamesService: GamesService) {
-      super(actionSubmissionNotifierService, activitiesService, gamesService);
-      this.promptSummaryAccessor = new PromptSummaryAccessor();
-   }
-
-   ngOnInit() {
-      super.ngOnInit();
-      this.promptSelectionNotificationService.promptSelected$
-         .subscribe(selection => this.onPromptSelection(selection));
-   }
 
    ngOnChanges(changes: SimpleChanges): void {
       this.recentlyClosed = {};
@@ -54,7 +35,7 @@ export class DisciplineActionComponent extends BaseActionComponent implements On
       return this.gameSummary.publicData.turn.prompt;
    }
 
-   private onPromptSelection(selection: PromptSelection) {
+   protected selectPrompt(selection: PromptSelection) {
       let key = selection.question.key;
       let existing = this.prompt.open[key];
       if (!existing) {

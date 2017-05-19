@@ -9,7 +9,8 @@
          <div class="col-12">
             <h6 class="card-subtitle mb-3 text-muted">Resolve the following prompts:</h6>
             <app-prompt-selector
-               [prompt]="prompt">
+               [prompt]="prompt"
+               (promptSelected)="selectPrompt($event)">
             </app-prompt-selector>
          </div>
       </div>

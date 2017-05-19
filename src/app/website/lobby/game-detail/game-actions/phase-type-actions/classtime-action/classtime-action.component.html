@@ -16,6 +16,7 @@
             <app-card-selector
                [cards]="accessor.currentTurnActor.hand.actionCards"
                [selectedCardId]="selectedCardId"
+               (cardSelected)="selectCard($event)"
                [disabled]="collapsedCardSection">
             </app-card-selector>
          </div>
@@ -23,6 +24,7 @@
             <h6 class="card-subtitle mb-3 text-muted">Resolve the following prompts:</h6>
             <app-prompt-selector
                [prompt]="prompt"
+               (promptSelected)="selectPrompt($event)"
                [disabled]="loading">
             </app-prompt-selector>
          </div>

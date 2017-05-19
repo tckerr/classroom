@@ -1,6 +1,5 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
+import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from "@angular/core";
 import {PromptSummary} from "../../../../../../../finalsweek-api/game/models/summary/prompt-summary";
-import {PromptSelectionNotificationService} from "../../../../../../comm-services/prompt-selection-notification.service";
 import {PromptQuestion, PromptSelection} from "../../../../../../comm-services/models/prompt";
 
 @Component({
@@ -8,17 +7,12 @@ import {PromptQuestion, PromptSelection} from "../../../../../../comm-services/m
    templateUrl: "./prompt-selector.component.html",
    styleUrls:   ["./prompt-selector.component.css"]
 })
-export class PromptSelectorComponent implements OnInit, OnChanges {
+export class PromptSelectorComponent implements OnChanges {
 
    @Input() prompt: PromptSummary;
    @Input() disabled = false;
    private questions: PromptQuestion[];
-
-   constructor(private promptSelectionNotificationService: PromptSelectionNotificationService) {
-   }
-
-   ngOnInit() {
-   }
+   @Output() private promptSelected = new EventEmitter<PromptSelection>();
 
    init(prompt) {
       this.initializeQuestions(prompt);
@@ -66,6 +60,6 @@ export class PromptSelectorComponent implements OnInit, OnChanges {
          console.log("Selecting", selectedOption, "via option", optionId, "for question", question.key);
       }
       let promptSelection = new PromptSelection(question, selectedOption);
-      this.promptSelectionNotificationService.broadcastPromptSelection(promptSelection);
+      this.promptSelected.emit(promptSelection);
    }
 }

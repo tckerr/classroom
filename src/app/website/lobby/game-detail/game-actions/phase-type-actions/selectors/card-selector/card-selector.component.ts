@@ -1,31 +1,20 @@
-import {Component, Input, OnChanges, SimpleChanges} from "@angular/core";
-import {CardIdSelectionService} from "../../../../../../comm-services/card-id-selection-notification.service";
+import {Component, Input, Output, EventEmitter} from "@angular/core";
 
 @Component({
    selector:    "app-card-selector",
    templateUrl: "./card-selector.component.html",
    styleUrls:   ["./card-selector.component.css"]
 })
-export class CardSelectorComponent implements OnChanges {
+export class CardSelectorComponent {
 
-   @Input() private cards: any[] = [];
-   @Input() private selectedCardId: string;
-   @Input() private disabled: boolean;
-   private selectedCard: any;
+   @Input() protected cards: any[] = [];
+   @Input() protected selectedCardId: string;
+   @Input() protected disabled: boolean;
+   @Output() private cardSelected = new EventEmitter<string>();
 
-   constructor(private actorIdSelectionService: CardIdSelectionService) {
-   }
+   constructor() {}
 
    public onSelect(selectedCard) {
-      this.selectedCard = selectedCard;
-      this.actorIdSelectionService.broadcastSelection(selectedCard.id);
-   }
-
-   ngOnChanges(changes: SimpleChanges): void {
-      for (let card of this.cards) {
-         if (card.id === this.selectedCardId) {
-            this.selectedCard = card;
-         }
-      }
+      this.cardSelected.emit(selectedCard.id);
    }
 }

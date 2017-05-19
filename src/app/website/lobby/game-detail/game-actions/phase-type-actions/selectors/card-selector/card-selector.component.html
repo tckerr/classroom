@@ -1,21 +1,10 @@
-<!--<select
-  [(ngModel)]="selectedCard"
-  (change)="onSelect(selectedCard)"
-  class="form-control"
-  [disabled]="disabled">
-  <option
-    *ngFor="let card of cards"
-    [ngValue]="card">
-    <span>{{card.template.name}}</span>
-  </option>
-</select>-->
 <div class="card-group">
    <ng-container *ngFor="let card of cards">
       <div
-         (click)="!disabled && (!selectedCard || card.id != selectedCard.id) && onSelect(card)"
-         *ngIf="(selectedCard && card.id == selectedCard.id) || !disabled"
+         (click)="!disabled && (!selectedCardId || card.id != selectedCardId) && onSelect(card)"
+         *ngIf="(selectedCardId && card.id == selectedCardId) || !disabled"
          class="card action-card"
-         [ngClass]="{'card-inverse card-primary': selectedCard && card.id == selectedCard.id}">
+         [ngClass]="{'card-inverse card-primary': card.id == selectedCardId}">
          <div class="card-block">
             <h5 class="card-title">{{card.template.name}}</h5>
             <p class="small card-text">{{card.template.description}}</p>
