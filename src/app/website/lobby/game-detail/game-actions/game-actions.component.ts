@@ -22,6 +22,7 @@ export class GameActionsComponent implements OnInit {
    @Input() public gameId: string;
    @Input() public actorId: string;
    private accessor: GameSummaryAccessor;
+   private ActionType = ActionType;
 
    constructor(private gamesService: GamesService,
                private gameSummaryUpdateNotifierService: GameSummaryUpdateNotifierService,
@@ -47,18 +48,6 @@ export class GameActionsComponent implements OnInit {
 
    private get currentPhase(){
       return this.phaseActionTypeResolver.resolve(this.accessor.phaseType);
-   }
-
-   protected get isActionCardAction (){
-      return this.currentPhase === ActionType.ActionCard;
-   }
-
-   protected get isDisciplineAction (){
-      return this.currentPhase === ActionType.Discipline;
-   }
-
-   protected get isBaseAction (){
-      return this.currentPhase === ActionType.Base;
    }
 
 }

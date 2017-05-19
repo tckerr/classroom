@@ -1,18 +1,10 @@
 <ng-container *ngIf="!refresher.isRefreshing">
    <app-game-board [gameSummary]="accessor.gameSummary"></app-game-board>
-
-   <div class="mt-2" *ngIf="isActionCardAction">
-      <app-classtime-action [gameSummary]="accessor.gameSummary"></app-classtime-action>
+   <div class="mt-2" [ngSwitch]="currentPhase">
+      <app-base-action       *ngSwitchCase="ActionType.Base"       [gameSummary]="accessor.gameSummary"></app-base-action>
+      <app-classtime-action  *ngSwitchCase="ActionType.ActionCard" [gameSummary]="accessor.gameSummary"></app-classtime-action>
+      <app-discipline-action *ngSwitchCase="ActionType.Discipline" [gameSummary]="accessor.gameSummary"></app-discipline-action>
    </div>
-
-   <div class="mt-2" *ngIf="isBaseAction">
-      <app-base-action [gameSummary]="accessor.gameSummary"></app-base-action>
-   </div>
-
-   <div class="mt-2" *ngIf="isDisciplineAction">
-      <app-discipline-action [gameSummary]="accessor.gameSummary"></app-discipline-action>
-   </div>
-
    <div class="mt-2">
       <app-game-json [gameSummary]="accessor.gameSummary"></app-game-json>
    </div>

@@ -56,8 +56,6 @@ export class PromptSelectorComponent implements OnChanges {
       if (!selectedOption) {
          console.error("Option", optionId, "not found in", question.options);
          throw Error("Option was not found in question options list.");
-      } else {
-         console.log("Selecting", selectedOption, "via option", optionId, "for question", question.key);
       }
       let promptSelection = new PromptSelection(question, selectedOption);
       this.promptSelected.emit(promptSelection);
