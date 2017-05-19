@@ -14,14 +14,10 @@ export class PromptSelectorComponent implements OnChanges {
    private questions: PromptQuestion[];
    @Output() private promptSelected = new EventEmitter<PromptSelection>();
 
-   init(prompt) {
-      this.initializeQuestions(prompt);
-   }
-
    ngOnChanges(changes: SimpleChanges): void {
       if (changes["prompt"]) {
          let prompt = changes["prompt"].currentValue;
-         this.init(prompt);
+         this.initializeQuestions(prompt);
       }
    }
 
@@ -54,8 +50,7 @@ export class PromptSelectorComponent implements OnChanges {
          }
       }
       if (!selectedOption) {
-         console.error("Option", optionId, "not found in", question.options);
-         throw Error("Option was not found in question options list.");
+         throw Error(`Option ${optionId} not found in ${question.options}`);
       }
       let promptSelection = new PromptSelection(question, selectedOption);
       this.promptSelected.emit(promptSelection);
